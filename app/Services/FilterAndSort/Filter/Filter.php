@@ -74,7 +74,7 @@ class Filter
             $search = $this->filterEnabledTableColumnCollection->search($key);
             $exist = $search >= 0 && $search != null ? 1 : 0;
             if($exist === 0) {
-                abort(Response::HTTP_UNPROCESSABLE_ENTITY, "The ${key} field is not allowed."); // Throwing HttpException
+                abort(Response::HTTP_UNPROCESSABLE_ENTITY, "The $key field is not allowed."); // Throwing HttpException
             }
         }
     }
