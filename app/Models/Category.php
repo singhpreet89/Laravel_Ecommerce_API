@@ -6,20 +6,33 @@ use App\mODELS\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'name', 'description'
+        'name',
+        'description',
     ];
 
+    /**
+     * Attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
         'pivot',
     ];
 
-    public function products() {
+    public function products() : BelongsToMany
+    {
         return $this->belongsToMany(Product::class);
     }
 }

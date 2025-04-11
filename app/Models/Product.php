@@ -9,43 +9,78 @@ use Illuminate\Database\Eloquent\Model;
 use App\Events\CheckProductAvailabilityEvent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    const AVAILABLE_PRODUCT = 'available';
-    const UNAVAILABLE_PRODUCT = 'unavailable';
+    public const AVAILABLE_PRODUCT = 'available';
+    public const UNAVAILABLE_PRODUCT = 'unavailable';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'name', 'description', 'quantity', 'status', 'image', 'seller_id',
+        'name',
+        'description',
+        'quantity',
+        'status',
+        'image',
+        'seller_id',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
         'pivot',
     ];
 
-    // ! Event emitter to change the product 'status' to 'unavailable' when the 'quantity' is reduced to 0 after performing a 'Transaction'
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
     protected $dispatchesEvents = [
         'updated' => CheckProductAvailabilityEvent::class,
     ];
 
-    public function isAvailable() {
-        // ! This returns a true or false
-        return $this->status == Product::AVAILABLE_PRODUCT;
-        // Or
-        // return $this->status == self::AVAILABLE_PRODUCT;
+    /**
+     * Check if the product is available
+     */
+    public function isAvailable(): bool
+    {
+        return $this->status === self::AVAILABLE_PRODUCT;
     }
 
-    public function seller() {
+    /**
+     * Define product-seller relationship
+     */
+    public function seller(): BelongsTo
+    {
         return $this->belongsTo(Seller::class);
     }
 
-    public function categories() {
+    /**
+     * Define product-category relationship
+     */
+    public function categories(): BelongsToMany
+    {
         return $this->belongsToMany(Category::class);
     }
 
-    public function transactions() {
+    /**
+     * Define product-transaction relationship
+     */
+    public function transactions(): HasMany
+    {
         return $this->hasMany(Transaction::class);
     }
 }

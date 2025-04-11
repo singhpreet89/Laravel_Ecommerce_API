@@ -11,20 +11,16 @@ class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         /** 
          * ! Laravel will generate an exception that this email already exists, when the user sends an Update request using his old email address as the new email address

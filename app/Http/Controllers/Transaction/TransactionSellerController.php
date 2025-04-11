@@ -14,7 +14,7 @@ class TransactionSellerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Transaction $transaction)
+    public function index(Transaction $transaction) : SellerResource
     {
         $seller = $transaction->product->seller;
         return new SellerResource($seller);

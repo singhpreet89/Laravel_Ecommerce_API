@@ -10,6 +10,7 @@ use App\Services\Pagination\PaginationFacade;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\Category\CategoryCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductCategoryController extends Controller
 {
@@ -18,7 +19,7 @@ class ProductCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Product $product, Category $category)
+    public function index(Product $product, Category $category) : AnonymousResourceCollection
     {
         $categories = $product->categories;
 
@@ -36,7 +37,7 @@ class ProductCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     // ! Allow to add a new Category for an existing product
-    public function update(Request $request, Product $product, Category $category)
+    public function update(Request $request, Product $product, Category $category) : AnonymousResourceCollection
     {
         // For using Many to Many relationships, attach, sync, syncWithoutDetaching can be used
         // $product->categories()->attach([$category->id]);             // ? This will add the Category again if it is already attached
@@ -52,7 +53,7 @@ class ProductCategoryController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product, Category $category)
+    public function destroy(Product $product, Category $category) : AnonymousResourceCollection | Response
     {
         if (!$product->categories()->find($category->id)) {
             return response([

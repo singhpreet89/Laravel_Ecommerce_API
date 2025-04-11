@@ -15,6 +15,8 @@ use App\Http\Requests\Seller\SellerStoreRequest;
 use App\Http\Requests\Seller\SellerUpdateRequest;
 use App\Http\Resources\Product\ProductCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use PhpParser\Parser\Php8;
 
 class SellerProductController extends Controller
 {
@@ -23,7 +25,7 @@ class SellerProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Seller $seller, Product $product)
+    public function index(Seller $seller, Product $product) : AnonymousResourceCollection
     {
         $products = $seller->products;
 
@@ -39,7 +41,7 @@ class SellerProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SellerStoreRequest $request, User $seller)
+    public function store(SellerStoreRequest $request, User $seller) : ProductResource
     {
         // ! User $seller A user object has to be of a Seller type 
         $data = $request->all();
@@ -58,7 +60,7 @@ class SellerProductController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(SellerUpdateRequest $request, Seller $seller, Product $product)
+    public function update(SellerUpdateRequest $request, Seller $seller, Product $product) : ProductResource | Response
     {
         if ($seller->id !== $product->seller_id) {
             return response([
@@ -105,7 +107,7 @@ class SellerProductController extends Controller
      * @param  \App\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seller $seller, Product $product)
+    public function destroy(Seller $seller, Product $product) : ProductResource | Response
     {
         if ($seller->id !== $product->seller_id) {
             return response([

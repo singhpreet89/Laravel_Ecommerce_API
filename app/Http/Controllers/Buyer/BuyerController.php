@@ -7,17 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Buyer\BuyerResource;
 use App\Http\Resources\Buyer\BuyerCollection;
 use App\Services\Pagination\PaginationFacade;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
 
 class BuyerController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @param  Buyer $buyer
-     * @return \Illuminate\Http\Response
      */
-    public function index(Buyer $buyer)
+    public function index(Buyer $buyer): ResourceCollection
     {
         // ! If the User has atleast one Transaction then he is a Buyer
         // $buyers = Buyer::has('transactions')->get();
@@ -32,11 +30,8 @@ class BuyerController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  Buyer $buyer
-     * @return \Illuminate\Http\Response
      */
-    public function show(Buyer $buyer)
+    public function show(Buyer $buyer): BuyerResource
     {
         // $buyer = Buyer::has('transactions')->findOrFail($id);
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Request;
 use App\Services\Pagination\PaginationFacade;
 use App\Http\Resources\Category\CategoryCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class SellerCategoryController extends Controller
 {
@@ -17,7 +18,7 @@ class SellerCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Seller $seller, Category $category)
+    public function index(Seller $seller, Category $category) : AnonymousResourceCollection
     {
         $productsWithcategories = $seller->products()->whereHas('categories')->with('categories')->get();
 

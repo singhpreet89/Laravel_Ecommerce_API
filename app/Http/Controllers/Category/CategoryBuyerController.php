@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Resources\Buyer\BuyerCollection;
 use App\Services\Pagination\PaginationFacade;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class CategoryBuyerController extends Controller
 {
@@ -17,7 +19,7 @@ class CategoryBuyerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category, Buyer $buyer)
+    public function index(Category $category, Buyer $buyer) : AnonymousResourceCollection
     {
         $transactionsWithBuyers = $category->products()->whereHas('transactions')->with('transactions.buyer')->get();
         $transactions = $transactionsWithBuyers->pluck('transactions')->collapse();

@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Builder;
 
 class BuyerScope implements Scope {
-    public function apply(Builder $builder, Model $model) {
+
+    public function apply(Builder $builder, Model $model) : void
+    {
         $builder->has('transactions');
     }
 }

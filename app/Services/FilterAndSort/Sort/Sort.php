@@ -18,7 +18,7 @@ class Sort
 
     }
 
-    private function validate()
+    private function validate() : void
     {
         // ? Performing the Validation here to eliminate the need of creating the Request Validation for each Controller's Index method where SORTING will be used 
         Request::validate([
@@ -35,7 +35,7 @@ class Sort
         ]);
     }
 
-    private function sortCollection(Collection $collection)
+    private function sortCollection(Collection $collection) : Collection
     {
         if (Request::has('sort_by')) {
             $sortByQueryParameter = Request::input('sort_by');
@@ -50,7 +50,7 @@ class Sort
         return $collection;
     }
 
-    public function apply(Collection $collection)
+    public function apply(Collection $collection) : Collection
     {
         $this->validate();
         return $this->sortCollection($collection);

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;
 use App\Http\Resources\Product\ProductCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CategoryProductController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoryProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category, Product $product)
+    public function index(Category $category, Product $product) : AnonymousResourceCollection
     {
         $products = $category->products;
 

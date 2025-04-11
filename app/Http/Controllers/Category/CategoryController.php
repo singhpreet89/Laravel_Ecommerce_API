@@ -11,6 +11,7 @@ use App\Http\Resources\Category\CategoryCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
 use App\Http\Requests\Category\CategoryStoreRequest;
 use App\Http\Requests\Category\CategoryUpdateRequest;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CategoryController extends Controller
 {
@@ -19,7 +20,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
+    public function index(Category $category) : AnonymousResourceCollection
     {
         $categories = $category->all();
 
@@ -35,7 +36,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryStoreRequest $request)
+    public function store(CategoryStoreRequest $request) : CategoryResource
     {
         $category = Category::create($request->all());
         return new CategoryResource($category);
@@ -47,7 +48,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $category) : CategoryResource
     {
         return new CategoryResource($category);
     }
@@ -59,7 +60,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryUpdateRequest $request, Category $category)
+    public function update(CategoryUpdateRequest $request, Category $category) : CategoryResource
     {
         // $category->fill($request->only(['name', 'description']));
         // $category->save();
@@ -74,7 +75,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category) : CategoryResource
     {
         $category->delete();
         return new CategoryResource($category);

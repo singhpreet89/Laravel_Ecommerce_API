@@ -9,6 +9,7 @@ use App\Services\Pagination\PaginationFacade;
 use App\Services\FilterAndSort\FilterAndSortFacade;
 use App\Http\Resources\Transaction\TransactionResource;
 use App\Http\Resources\Transaction\TransactionCollection;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class TransactionController extends Controller
 {
@@ -17,7 +18,7 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Transaction $transaction)
+    public function index(Transaction $transaction) : AnonymousResourceCollection
     {
         $transactions = $transaction->all();
 
@@ -33,7 +34,7 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show(Transaction $transaction) : TransactionResource
     {
         return new TransactionResource($transaction);
     }

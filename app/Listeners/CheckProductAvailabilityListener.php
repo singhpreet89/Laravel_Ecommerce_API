@@ -26,7 +26,7 @@ class CheckProductAvailabilityListener
      * @param  CheckProductAvailabilityEvent  $event
      * @return void
      */
-    public function handle(CheckProductAvailabilityEvent $event)
+    public function handle(CheckProductAvailabilityEvent $event) : void
     {
         if($event->productObject->quantity === 0 && $event->productObject->isAvailable())  {
             $event->productObject->status = Product::UNAVAILABLE_PRODUCT;

@@ -30,9 +30,8 @@ class CheckProductAvailabilityEvent
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn()
+    public function broadcastOn() : Channel|array
     {
         return new PrivateChannel('channel-name');
     }

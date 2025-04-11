@@ -11,6 +11,7 @@ use App\Http\Resources\User\UserCollection;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Services\Pagination\PaginationFacade;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 use App\Services\FilterAndSort\FilterAndSortFacade;
 
@@ -18,10 +19,8 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index(User $user): ResourceCollection
     {
         $users = $user->all();
         $filteredAndSortedUsers = FilterAndSortFacade::apply($users, $user);
@@ -32,11 +31,8 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\UserStoreRequest  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(UserStoreRequest $request)
+    public function store(UserStoreRequest $request): UserResource
     {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
@@ -50,23 +46,16 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user): UserResource
     {
         return new UserResource($user);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\UserUpdateRequest  $request
-     * @param  User $user
-     * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateRequest $request, User $user)
+    public function update(UserUpdateRequest $request, User $user): UserResource
     {
         if ($request->has('name')) {
             $user->name = $request->name;
@@ -92,11 +81,8 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user): UserResource
     {
         $user->delete();
         return new UserResource($user);

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;
 use App\Http\Resources\Product\ProductCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class BuyerProductController extends Controller
 {
@@ -17,7 +18,7 @@ class BuyerProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Buyer $buyer, Product $product)
+    public function index(Buyer $buyer, Product $product) : AnonymousResourceCollection
     {  
         /**
          * ! EAGER LOAGING

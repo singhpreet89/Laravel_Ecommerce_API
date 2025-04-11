@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Buyer\BuyerCollection;
 use App\Services\Pagination\PaginationFacade;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductBuyerController extends Controller
 {
@@ -17,7 +18,7 @@ class ProductBuyerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Product $product, Buyer $buyer)
+    public function index(Product $product, Buyer $buyer) : AnonymousResourceCollection
     {
         $transactionsWithBuyers = $product->transactions()->with('buyer')->get();
         $buyers = $transactionsWithBuyers->pluck('buyer')->unique('id')->values();

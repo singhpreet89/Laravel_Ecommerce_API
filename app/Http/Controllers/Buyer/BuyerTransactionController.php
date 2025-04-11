@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
 use App\Http\Resources\Transaction\TransactionCollection;
 
@@ -14,10 +15,8 @@ class BuyerTransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index(Buyer $buyer, Transaction $transaction)
+    public function index(Buyer $buyer, Transaction $transaction): ResourceCollection
     {
         $transactions = $buyer->transactions;
 

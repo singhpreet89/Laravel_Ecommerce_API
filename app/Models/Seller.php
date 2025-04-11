@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Product;
 use App\Scopes\SellerScope;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Seller extends User
 {
@@ -29,12 +30,13 @@ class Seller extends User
      *
      * @return void
      */
-    protected static function booted()
+    protected static function booted() : void
     {   
         static::addGlobalScope(new SellerScope);
     }
 
-    public function products() {
+    public function products() : HasMany 
+    {
         return $this->hasMany(Product::class);
     }
 }

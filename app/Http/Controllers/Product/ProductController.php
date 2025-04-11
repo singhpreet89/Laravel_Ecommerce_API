@@ -9,6 +9,7 @@ use App\Services\Pagination\PaginationFacade;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Product $product)
+    public function index(Product $product) : AnonymousResourceCollection
     {
         $products = $product->all();
 
@@ -33,7 +34,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $product) : ProductResource
     {
         return new ProductResource($product);
     }

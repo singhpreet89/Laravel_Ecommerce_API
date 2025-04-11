@@ -18,7 +18,7 @@ class PaginationService
         $this->page = LengthAwarePaginator::resolveCurrentPage();   // To find which page we are on
     }
 
-    private function validate()
+    private function validate() : void
     {
         // ? Performing the Validation here to eliminate the need of creating the Request Validation for each Controller's Index method where PAGINATION will be used 
         Request::validate([
@@ -38,7 +38,7 @@ class PaginationService
         ]);
     }
 
-    private function paginate(Collection $collection)
+    private function paginate(Collection $collection) : LengthAwarePaginator | Collection
     {
         if (Request::has('per_page')) {
             if (Request::input('per_page') === 'disabled') {
@@ -59,7 +59,7 @@ class PaginationService
         return $paginated;
     }
 
-    public function apply(Collection $collection)
+    public function apply(Collection $collection) : LengthAwarePaginator | Collection
     {
         $this->validate();
         $paginatedCollection = $this->paginate($collection);

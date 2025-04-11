@@ -20,13 +20,13 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes;
 
-    const VERIFIED_USER = '1';
-    const UNVERIFIED_USER = '0';
+    public const VERIFIED_USER = '1';
+    public const UNVERIFIED_USER = '0';
 
-    const ADMIN_USER = 'true';
-    const REGULAR_USER = 'false';
+    public const ADMIN_USER = 'true';
+    public const REGULAR_USER = 'false';
 
-   /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -42,6 +42,8 @@ class User extends Authenticatable
 
     /**
      * Attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -50,9 +52,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * Attributes casting.
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
      */
-    public function casts(): array
+    protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',

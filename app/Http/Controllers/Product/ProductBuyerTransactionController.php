@@ -22,7 +22,7 @@ class ProductBuyerTransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductBuyerTransactionRequest $request, Product $product, User $buyer)
+    public function store(ProductBuyerTransactionRequest $request, Product $product, User $buyer) : TransactionResource | Response
     {
         // Make sure than the Seller is different from Buyer
         if ($buyer->id == $product->seller_id) {

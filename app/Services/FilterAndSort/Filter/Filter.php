@@ -39,7 +39,7 @@ class Filter
      *      ? ELSE
      *          * The query parameter must be one of the tables's columns   
      */
-    private function verifyCustomFilterColumns()
+    private function verifyCustomFilterColumns() : void
     {
         if (is_array($this->filterAndSortOnColumns) && sizeOf($this->filterAndSortOnColumns) > 0) {
             $this->filterEnabledTableColumnCollection = collect($this->filterAndSortOnColumns);
@@ -52,7 +52,7 @@ class Filter
      *  ! Unsetting all the Query Parameters which are not being used to Filter the collection
      *      ? Because, $collection = $collection->where($query, $value); used in the 'Filter logic' returns nothing when encountering these Query parameters   
      */
-    private function prepareQueryParamsForFilter()
+    private function prepareQueryParamsForFilter() : void
     {
         $this->queryParametersForFiltering = Request::query();
         foreach ($this->excludeQueryParamsFromFilter as $value) {
@@ -68,7 +68,7 @@ class Filter
      *      ? 2. Else
      *          * The query parameter must be one of the tables's columns    
      */
-    private function validate()
+    private function validate() : void
     {
         foreach ($this->queryParametersForFiltering as $key => $value) { 
             $search = $this->filterEnabledTableColumnCollection->search($key);
@@ -79,8 +79,7 @@ class Filter
         }
     }
 
-    private function filterCollection(Collection $collection)
-    {
+    private function filterCollection(Collection $collection) : Collection    {
         foreach ($this->queryParametersForFiltering as $query => $value) {
             /**
              *  ? The Query Parameter must be present and has a value.
@@ -98,7 +97,7 @@ class Filter
         return $collection;
     }
 
-    public function apply(Collection $collection)
+    public function apply(Collection $collection) : Collection
     {
         $this->verifyCustomFilterColumns();
         $this->prepareQueryParamsForFilter();

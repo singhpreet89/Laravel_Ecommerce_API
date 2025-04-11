@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;
 use App\Services\FilterAndSort\FilterAndSortFacade;
 use App\Http\Resources\Transaction\TransactionCollection;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CategoryTransactionController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoryTransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category, Transaction $transaction)
+    public function index(Category $category, Transaction $transaction) : AnonymousResourceCollection
     {
         $transactions = $category->products()->whereHas('transactions')->with('transactions')->get()->pluck('transactions')->collapse();
         

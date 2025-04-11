@@ -9,6 +9,7 @@ use App\Http\Resources\Seller\SellerResource;
 use App\Services\Pagination\PaginationFacade;
 use App\Http\Resources\Seller\SellerCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class SellerController extends Controller
 {
@@ -18,7 +19,7 @@ class SellerController extends Controller
      * @param  Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function index(Seller $seller)
+    public function index(Seller $seller) : AnonymousResourceCollection
     {
         // If the User has atleast one Product then he is a Seller
         // $sellers = Seller::has('products')->paginate(20);
@@ -38,7 +39,7 @@ class SellerController extends Controller
      * @param  Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function show(Seller $seller)
+    public function show(Seller $seller) : SellerResource
     {
         // $seller = Seller::has('products')->findOrFail($id);
 

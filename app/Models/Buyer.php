@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Transaction;
 use App\Scopes\BuyerScope;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Buyer extends User
 {
@@ -29,12 +30,12 @@ class Buyer extends User
      *
      * @return void
      */
-    protected static function booted()
+    protected static function booted() : void
     {
         static::addGlobalScope(new BuyerScope);
     }
 
-    public function transactions()
+    public function transactions() : HasMany
     {
         return $this->hasMany(Transaction::class);
     }

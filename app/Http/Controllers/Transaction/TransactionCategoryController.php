@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;
 use App\Http\Resources\Category\CategoryCollection;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class TransactionCategoryController extends Controller
 {
@@ -17,7 +18,7 @@ class TransactionCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Transaction $transaction, Category $category)
+    public function index(Transaction $transaction, Category $category) : AnonymousResourceCollection
     {
         $categories = $transaction->product->categories;
 
