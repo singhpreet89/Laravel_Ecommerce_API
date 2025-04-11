@@ -3,7 +3,7 @@
 namespace App\Http\Requests\User;
 
 use App\Rules\CheckVerified;
-use App\User;
+use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 

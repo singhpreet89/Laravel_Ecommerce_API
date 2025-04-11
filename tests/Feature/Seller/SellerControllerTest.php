@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Seller;
 
-use App\User;
-use App\Seller;
-use App\Product;
+use App\Models\User;
+use App\Models\Seller;
+use App\Models\Product;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -27,12 +27,11 @@ class SellerControllerTest extends TestCase
         $numberOfUsers = 20;
 
         // Each created user might have purchased a product or not rand(0, 2) ensures that 
-        $users = factory(User::class, $numberOfUsers)->create()
-            ->each(function ($user) {
-                factory(Product::class, rand(0, 2))->create([
-                    "seller_id" => $user->id,
-                ]);
-            });
+        User::factory()->count($numberOfUsers)->create()->each(function ($user) {
+            Product::factory()->count(rand(0, 2))->create([
+                "seller_id" => $user->id,
+            ]);
+        });
         
         $totalSellers = Seller::has('products')->count();
 
@@ -82,8 +81,8 @@ class SellerControllerTest extends TestCase
      */
     public function testShow()
     {
-        $seller = factory(User::class)->create();
-        $product = factory(Product::class)->create([
+        $seller = User::factory()->create();
+        Product::factory()->create([
             "seller_id" => $seller->id,
         ]);
 

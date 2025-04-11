@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Buyer;
 
-use App\User;
-use App\Buyer;
-use App\Seller;
-use App\Product;
-use App\Category;
+use App\Models\User;
+use App\Models\Buyer;
+use App\Models\Seller;
+use App\Models\Product;
+use App\Models\Category;
 use Tests\TestCase;
-use App\Transaction;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -32,7 +32,7 @@ class BuyerCategoryControllerTest extends TestCase
         $numberOfCategories = 5;
         $numberOfUsers = 6;
 
-        factory(Category::class, $numberOfCategories)->create();
+        Category::factory()->count($numberOfCategories)->create();
 
         /**
          * ? User 1 to 5 are Sellers and each Seller has 1 Product listed which further belongs to multiple Categories
@@ -42,11 +42,10 @@ class BuyerCategoryControllerTest extends TestCase
         $buyerId = null;                                // Captured Buyer id
         $categoriesAttachedToEachProduct = collect();   // Collection to hold the  number of categories attached to each product
         $randomProductId = null;
-        factory(User::class, $numberOfUsers)->create()
+        User::factory()->count($numberOfUsers)->create()
             ->each(function($user) use ($numberOfUsers, $numberOfCategories, &$buyerId, &$categoriesAttachedToEachProduct, &$randomProductId) {    // Passing $buyerId and $categoriesAttachedToEachProduct as reference
-                
                 if($user->id < $numberOfUsers) {
-                    factory(Product::class, $this->faker->numberBetween(1, 3))->create([
+                    Product::factory()->count($this->faker->numberBetween(1, 3))->create([
                         'seller_id' => $user->id,
                         'quantity' => 20,
                         'status' => "available",
@@ -61,7 +60,8 @@ class BuyerCategoryControllerTest extends TestCase
                     $seller = Seller::has('products')->get()->random();
                     $randomProductId = $seller->products->random()->id;
                     
-                    factory(Transaction::class, 1)->create([
+                    // factory(Transaction::class, 1)->create([
+                    Transaction::factory()->count(1)->create([
                         "quantity" => $this->faker->numberBetween(1, 3),
                         "buyer_id" => $user->id,
                         "product_id" => $randomProductId,     

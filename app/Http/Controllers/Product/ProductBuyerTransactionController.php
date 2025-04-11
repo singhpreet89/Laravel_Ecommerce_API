@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\User;
-use App\Product;
-use App\Transaction;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Seller;
 
-use App\User;
-use App\Seller;
-use App\Product;
+use App\Models\User;
+use App\Models\Seller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;

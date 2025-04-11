@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Seller;
-use App\Category;
+use App\Models\Seller;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
 use App\Services\Pagination\PaginationFacade;

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\Product;
-use App\Transaction;
+use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;

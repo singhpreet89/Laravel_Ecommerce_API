@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Seller;
 
-use App\Buyer;
-use App\Seller;
+use App\Models\Buyer;
+use App\Models\Seller;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
 use App\Http\Resources\Buyer\BuyerCollection;

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Model\User;
 
-use App\User;
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -17,14 +17,10 @@ class UserModelTest extends TestCase
         parent::setUp();
     }
 
-    /**
-     *
-     * @return void
-     */
-    public function testAll()
+    public function testAll() : void
     {
         $numberOfUsers = 10;
-        $users = factory(User::class, $numberOfUsers)->create();
+        $users = User::factory()->count($numberOfUsers)->create();
         $createdUsers = User::all(); 
 
         $this->assertEquals($users->count(), $createdUsers->count());
@@ -55,13 +51,9 @@ class UserModelTest extends TestCase
         }
     }
 
-    /**
-     *
-     * @return void
-     */
-    public function testCreate()
+    public function testCreate() : void
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $savedUser = User::find($user->id);
         $savedUserArray = $savedUser->toArray();
 
@@ -97,13 +89,9 @@ class UserModelTest extends TestCase
         $this->assertCount(9, $savedUserArray);
     }
 
-    /**
-     *
-     * @return void
-     */
-    public function testUpdate()
+    public function testUpdate() : void
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         
         $user->name = "Jack Sparrow";
         $user->email = "jack@sparrow.com"; 
@@ -126,18 +114,26 @@ class UserModelTest extends TestCase
         $this->assertEquals(null, $savedUser->deleted_at);
     }
 
-    /**
-     *
-     * @return void
-     */
-    public function testDelete()
+    public function testDelete() : void
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $deletedUser = $user->delete($user->id);
 
         $totalUsers = User::all();
 
         $this->assertTrue($deletedUser);
         $this->assertEquals(0, $totalUsers->count());
+    }
+
+    public function testSoftDeletes() : void
+    {
+        $user = User::factory()->create();
+        $user->delete();
+
+        $this->assertSoftDeleted($user);
+        $this->assertCount(0, User::all());
+
+        $trashedUser = User::withTrashed()->find($user->id);
+        $this->assertNotNull($trashedUser->deleted_at);
     }
 }

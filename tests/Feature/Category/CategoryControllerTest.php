@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Category;
 
-use App\Category;
+use App\Models\Category;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -23,7 +23,7 @@ class CategoryControllerTest extends TestCase
     public function testIndex()
     {
         $numberOfCategories = 18;
-        factory(Category::class, $numberOfCategories)->create();
+        Category::factory()->count($numberOfCategories)->create();
 
         $response = $this->getJson(route('categories.index'));
         
@@ -70,7 +70,7 @@ class CategoryControllerTest extends TestCase
      */
     public function testShow()
     {
-        $category = factory(Category::class)->create();
+        $category = Category::factory()->create();
 
         $response = $this->getJson(route('categories.show', $category->id));
 
@@ -123,7 +123,7 @@ class CategoryControllerTest extends TestCase
      */
     public function testUpdate()
     {
-        $category = factory(Category::class)->create([
+        $category = Category::factory()->create([
             "name" => "Washing machines",
             "description" => "All the washing machines come under thic category.",
         ]);
@@ -154,7 +154,7 @@ class CategoryControllerTest extends TestCase
      */
     public function testdestroy()
     {
-        $category = factory(Category::class)->create();
+        $category = Category::factory()->create();
 
         $response = $this->deleteJson(route('categories.destroy', $category->id));
         

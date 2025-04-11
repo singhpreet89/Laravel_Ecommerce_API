@@ -1,26 +1,31 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use App\User;
-use App\Seller;
-use App\Transaction;
-use Faker\Generator as Faker;
+use App\Models\User;
+use App\Models\Seller;
+use App\Models\Product;
+use App\Models\Transaction;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Transaction::class, function (Faker $faker) {
-    // Select one random Seller from the list of Users who has one or More products to Sell
-    $seller = Seller::has('products')->get()->random();
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Transaction>
+ */
+class TransactionFactory extends Factory
+{
+    public function definition(): array
+    {
+        // Pick a seller who has products
+        $seller = Seller::has('products')->inRandomOrder()->first();
 
-    /** 
-     * Seller of the product can not be the Buyer of the Same Product 
-     * So, select any User from the 'Users' table randomly, who is not the Seller of this Product.
-     * 
-     **/
-    $buyer = User::all()->except($seller->id)->random();    
+        // Pick a buyer who is not the seller
+        $buyer = User::where('id', '!=', $seller->id)->inRandomOrder()->first();
 
-    return [
-        'quantity' => $faker->numberBetween(1, 3),
-        'buyer_id' => $buyer->id,
-        'product_id' => $seller->products->random()->id,  // Select Random product of the Randomly selected Seller
-    ];
-});
+        return [
+            'quantity' => fake()->numberBetween(1, 3),
+            'buyer_id' => $buyer->id,
+            'product_id' => $seller->products()->inRandomOrder()->first()->id,
+        ];
+    }
+}
+

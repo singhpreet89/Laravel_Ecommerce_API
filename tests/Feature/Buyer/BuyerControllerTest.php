@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Buyer;
 
-use App\User;
-use App\Product;
+use App\Models\User;
+use App\Models\Product;
 use Tests\TestCase;
-use App\Transaction;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -31,10 +31,10 @@ class BuyerControllerTest extends TestCase
         $numberOfBuyers = 15;
         $numberOfTransactions = 10;
 
-        $seller = factory(User::class, $numberOfSellers)->create();
-        $product = factory(Product::class, $numberOfProducts)->create();
-        $buyers = factory(User::class, $numberOfBuyers)->create();
-        $transactions = factory(Transaction::class, $numberOfTransactions)->create();
+        User::factory()->count($numberOfSellers)->create();
+        Product::factory()->count($numberOfProducts)->create();
+        User::factory()->count($numberOfBuyers)->create();
+        Transaction::factory()->count($numberOfTransactions)->create();
    
         $response = $this->getJson(route('buyers.index'));
 
@@ -81,11 +81,11 @@ class BuyerControllerTest extends TestCase
      */
     public function testShow()
     { 
-        $seller = factory(User::class)->create();
-        $product = factory(Product::class, 2)->create();
-        $buyer = factory(User::class)->create();
-        $transaction = factory(Transaction::class)->create([
-            "buyer_id" => $buyer->id,
+        $seller = User::factory()->create();
+        Product::factory()->count(2)->create();
+        $buyer = User::factory()->create();
+        Transaction::factory()->create([
+            'buyer_id' => $buyer->id,
         ]);
    
         $response = $this->getJson(route('buyers.show', $buyer->id));

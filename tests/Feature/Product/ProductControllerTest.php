@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Product;
 
-use App\User;
-use App\Product;
+use App\Models\User;
+use App\Models\Product;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -26,8 +26,8 @@ class ProductControllerTest extends TestCase
         $numberOfUsers = 5;
         $numberOfProducts = 19;
 
-        $users = factory(User::class, $numberOfUsers)->create();
-        $products = factory(Product::class, $numberOfProducts)->create([
+        User::factory()->count($numberOfUsers)->create();
+        Product::factory()->count($numberOfProducts)->create([
             "seller_id" => rand(1, $numberOfUsers),
         ]);
 
@@ -79,8 +79,8 @@ class ProductControllerTest extends TestCase
      */
     public function testShow()
     {
-        $user = factory(User::class)->create();
-        $product = factory(Product::class)->create([
+        $user = User::factory()->create();
+        $product = Product::factory()->create([
             "seller_id" => $user->id,
         ]);
 

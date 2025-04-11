@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Category;
-use App\Transaction;
+use App\Models\Category;
+use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;
 use App\Services\FilterAndSort\FilterAndSortFacade;

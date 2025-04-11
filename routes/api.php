@@ -2,48 +2,68 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Buyer\BuyerController;
+use App\Http\Controllers\Buyer\BuyerTransactionController;
+use App\Http\Controllers\Buyer\BuyerProductController;
+use App\Http\Controllers\Buyer\BuyerSellerController;
+use App\Http\Controllers\Buyer\BuyerCategoryController;
+use App\Http\Controllers\Seller\SellerController;
+use App\Http\Controllers\Seller\SellerTransactionController;
+use App\Http\Controllers\Seller\SellerCategoryController;
+use App\Http\Controllers\Seller\SellerBuyerController;
+use App\Http\Controllers\Seller\SellerProductController;
+use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Category\CategoryProductController;
+use App\Http\Controllers\Category\CategorySellerController;
+use App\Http\Controllers\Category\CategoryBuyerController;
+use App\Http\Controllers\Category\CategoryTransactionController;
+use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Product\ProductTransactionController;
+use App\Http\Controllers\Product\ProductBuyerController;
+use App\Http\Controllers\Product\ProductCategoryController;
+use App\Http\Controllers\Product\ProductBuyerTransactionController;
+use App\Http\Controllers\Transaction\TransactionController;
+use App\Http\Controllers\Transaction\TransactionCategoryController;
+use App\Http\Controllers\Transaction\TransactionSellerController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
+// Route::get('/user', function (Request $request) {
 //     return $request->user();
-// });
+// })->middleware('auth:sanctum');
 
-Route::apiResource('users', 'User\UserController');                                                                 // CRUD
 
-Route::apiResource('buyers', 'Buyer\BuyerController')->only('index', 'show');
-Route::apiResource('buyers.transactions', 'Buyer\BuyerTransactionController')->only('index');
-Route::apiResource('buyers.products', 'Buyer\BuyerProductController')->only('index');
-Route::apiResource('buyers.sellers', 'Buyer\BuyerSellerController')->only('index');
-Route::apiResource('buyers.categories', 'Buyer\BuyerCategoryController')->only('index');
+// User
+Route::apiResource('users', UserController::class);                                                                 // CRUD
 
-Route::apiResource('sellers', 'Seller\SellerController')->only('index', 'show');
-Route::apiResource('sellers.transactions', 'Seller\SellerTransactionController')->only('index');
-Route::apiResource('sellers.categories', 'Seller\SellerCategoryController')->only('index');
-Route::apiResource('sellers.buyers', 'Seller\SellerBuyerController')->only('index');
-Route::apiResource('sellers.products', 'Seller\SellerProductController');                                           // CRUD, Create, Update and Delete a product, 
+// Buyers
+Route::apiResource('buyers', BuyerController::class)->only('index', 'show');
+Route::apiResource('buyers.transactions', BuyerTransactionController::class)->only('index');
+Route::apiResource('buyers.products', BuyerProductController::class)->only('index');
+Route::apiResource('buyers.sellers', BuyerSellerController::class)->only('index');
+Route::apiResource('buyers.categories', BuyerCategoryController::class)->only('index');
 
-Route::apiResource('categories', 'Category\CategoryController');
-Route::apiResource('categories.products', 'Category\CategoryProductController')->only('index');
-Route::apiResource('categories.sellers', 'Category\CategorySellerController')->only('index');
-Route::apiResource('categories.buyers', 'Category\CategoryBuyerController')->only('index');
-Route::apiResource('categories.transactions', 'Category\CategoryTransactionController')->only('index');
+// Sellers
+Route::apiResource('sellers', SellerController::class)->only('index', 'show');
+Route::apiResource('sellers.transactions', SellerTransactionController::class)->only('index');
+Route::apiResource('sellers.categories', SellerCategoryController::class)->only('index');
+Route::apiResource('sellers.buyers', SellerBuyerController::class)->only('index');
+Route::apiResource('sellers.products', SellerProductController::class);                                             // CRUD, Create, Update and Delete a product,
 
-Route::apiResource('products', 'Product\ProductController')->only('index', 'show');
-Route::apiResource('products.transactions', 'Product\ProductTransactionController')->only('index');
-Route::apiResource('products.buyers', 'Product\ProductBuyerController')->only('index');
-Route::apiResource('products.categories', 'Product\ProductCategoryController')->only('index', 'update', 'destroy'); //CRUD
-Route::apiResource('products.buyers.transactions', 'Product\ProductBuyerTransactionController')->only('store');     // Perform Transaction, reduce the Product quantity, use events to update the 'availability'. 
+// Categories
+Route::apiResource('categories', CategoryController::class);
+Route::apiResource('categories.products', CategoryProductController::class)->only('index');
+Route::apiResource('categories.sellers', CategorySellerController::class)->only('index');
+Route::apiResource('categories.buyers', CategoryBuyerController::class)->only('index');
+Route::apiResource('categories.transactions', CategoryTransactionController::class)->only('index');
 
-Route::apiResource('transactions', 'Transaction\TransactionController')->only('index', 'show');
-Route::apiResource('transactions.categories', 'Transaction\TransactionCategoryController')->only('index');
-Route::apiResource('transactions.sellers', 'Transaction\TransactionSellerController')->only('index');
+// Products
+Route::apiResource('products', ProductController::class)->only('index', 'show');
+Route::apiResource('products.transactions', ProductTransactionController::class)->only('index');
+Route::apiResource('products.buyers', ProductBuyerController::class)->only('index');
+Route::apiResource('products.categories', ProductCategoryController::class)->only('index', 'update', 'destroy');    // CRUD
+Route::apiResource('products.buyers.transactions', ProductBuyerTransactionController::class)->only('store');        // Perform Transaction, reduce the Product quantity, use events to update the 'availability'. 
+
+// Transactions
+Route::apiResource('transactions', TransactionController::class)->only('index', 'show');
+Route::apiResource('transactions.categories', TransactionCategoryController::class)->only('index');
+Route::apiResource('transactions.sellers', TransactionSellerController::class)->only('index');

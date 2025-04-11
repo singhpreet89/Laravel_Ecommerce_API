@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Transaction;
 
-use App\User;
-use App\Product;
+use App\Models\User;
+use App\Models\Product;
 use Tests\TestCase;
-use App\Transaction;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,22 +29,20 @@ class TransactionControllerTest extends TestCase
         $numberOfBuyers = 10;
 
         // Creating 3 products per seller, so a total of 15 products
-        factory(User::class, $numberOfSellers)->create()
-            ->each(function ($user) {
-                factory(Product::class, 3)->create([
-                    "seller_id" => $user->id,
-                    "quantity" => 5,
-                ]);
-            });
+        User::factory()->count($numberOfSellers)->create()->each(function ($user) {
+            Product::factory()->count(3)->create([
+                "seller_id" => $user->id,
+                "quantity" => 5,
+            ]);
+        });
 
         // Creating 2 transactions per Buyers, transalting to a total of 20 transactions 
-        factory(User::class, $numberOfBuyers)->create()
-            ->each(function ($buyer) {
-                factory(Transaction::class, 2)->create([
-                    "buyer_id" => $buyer->id,
-                    "product_id" => rand(1, 15),
-                ]);
-            });
+        User::factory()->count($numberOfBuyers)->create()->each(function ($buyer) {
+            Transaction::factory()->count(2)->create([
+                "buyer_id" => $buyer->id,
+                "product_id" => rand(1, 15),
+            ]);
+        });
 
         $response = $this->getJson(route('transactions.index'));
 
@@ -93,14 +91,14 @@ class TransactionControllerTest extends TestCase
     public function testShow()
     {
         // Creating 1 product of 1 Seller
-        $seller = factory(User::class)->create();
-        $product =  factory(Product::class)->create([
+        $seller = User::factory()->create();
+        $product = Product::factory()->create([
             "seller_id" => $seller->id,
         ]);
 
         // Creating 1 transactions of 1 Buyers 
-        $buyer = factory(User::class)->create();
-        $transaction = factory(Transaction::class)->create([
+        $buyer = User::factory()->create();
+        $transaction = Transaction::factory()->create([
             "buyer_id" => $buyer->id,
             "quantity" => 1,
             "product_id" => $product->id,

@@ -1,19 +1,29 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use App\Product;
-use App\User;
-use Faker\Generator as Faker;
+use App\Models\Product;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Product::class, function (Faker $faker) {
-    return [
-        // 'name' => $faker->word,
-        'name' => $faker->unique()->sentence($nbWords = 6, $variableNbWords = true),
-        'seller_id' => User::all()->random()->id,
-        'description' => $faker->paragraph(1),
-        'quantity' => $faker->numberBetween(1, 10),
-        'status' => $faker->randomElement([Product::AVAILABLE_PRODUCT, Product::UNAVAILABLE_PRODUCT]),
-        'image' => $faker->randomElement(['1.jpg', '2.jpg', '3.jpg']),
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ */
+class ProductFactory extends Factory
+{
+    public function definition(): array
+    {
+        return [
+            'name' => fake()->unique()->sentence(6, true),
+            'seller_id' => User::query()->inRandomOrder()->value('id'),
+            'description' => fake()->paragraph(1),
+            'quantity' => fake()->numberBetween(1, 10),
+            'status' => fake()->randomElement([
+                Product::AVAILABLE_PRODUCT,
+                Product::UNAVAILABLE_PRODUCT
+            ]),
+            'image' => fake()->randomElement(['1.jpg', '2.jpg', '3.jpg']),
+        ];
+    }
+}
+

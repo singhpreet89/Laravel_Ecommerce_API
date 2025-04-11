@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Seller;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SellerUpdateRequest extends FormRequest

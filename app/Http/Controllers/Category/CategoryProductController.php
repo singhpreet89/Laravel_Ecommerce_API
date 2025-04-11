@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Product;
-use App\Category;
+use App\Models\Product;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;
 use App\Http\Resources\Product\ProductCollection;

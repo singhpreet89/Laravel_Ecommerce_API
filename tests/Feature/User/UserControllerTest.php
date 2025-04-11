@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\User;
 
-use App\User;
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -26,7 +26,7 @@ class UserControllerTest extends TestCase
     public function testindex()
     {
         $numberOfUsers = 5;
-        factory(User::class, $numberOfUsers)->create();
+        User::factory()->count($numberOfUsers)->create();
 
         $response = $this->getJson(route('users.index'));
         // Log::info($response->getContent());
@@ -112,7 +112,7 @@ class UserControllerTest extends TestCase
      */
     public function testShow()
     {
-        $user = factory(User::class)->make();
+        $user = User::factory()->create();
         $user->save();
 
         $response = $this->getJson(route('users.show', $user->id));
@@ -138,7 +138,7 @@ class UserControllerTest extends TestCase
      */
     public function testUpdate()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             "verified" => "0",
             "admin" => "false",
         ]);
@@ -171,7 +171,7 @@ class UserControllerTest extends TestCase
      */
     public function testDestroy()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->deleteJson(route('users.destroy', $user->id));
 

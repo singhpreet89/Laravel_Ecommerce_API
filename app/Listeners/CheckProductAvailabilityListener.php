@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Buyer;
 
-use App\Buyer;
+use App\Models\Buyer;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Buyer\BuyerResource;
 use App\Http\Resources\Buyer\BuyerCollection;

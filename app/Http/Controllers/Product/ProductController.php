@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Pagination\PaginationFacade;

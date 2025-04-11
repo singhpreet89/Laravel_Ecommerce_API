@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Buyer;
 
-use App\User;
-use App\Seller;
-use App\Product;
-use App\Category;
+use App\Models\User;
+use App\Models\Seller;
+use App\Models\Product;
+use App\Models\Category;
 use Tests\TestCase;
-use App\Transaction;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -31,7 +31,7 @@ class BuyerProductControllerTest extends TestCase
         $numberOfCategories = 5;
         $numberOfUsers = 4;
 
-        factory(Category::class, $numberOfCategories)->create();
+        Category::factory()->count($numberOfCategories)->create();
 
         /**
          * ? User 1 to 5 are Sellers and each Seller has 1 Product listed which further belongs to multiple Categories
@@ -41,11 +41,11 @@ class BuyerProductControllerTest extends TestCase
         $buyerId = null;                                // Captured Buyer id
         $totalPurchasedProducts = 0;
         
-        factory(User::class, $numberOfUsers)->create()
+        User::factory()->count($numberOfUsers)->create()
             ->each(function($user) use ($numberOfUsers, $numberOfCategories, &$buyerId, &$totalPurchasedProducts) {    // Passing $buyerId and $categoriesAttachedToEachProduct as reference
                 
                 if($user->id < $numberOfUsers) {
-                    factory(Product::class, $this->faker->numberBetween(1, 5))->create([
+                    Product::factory()->count($this->faker->numberBetween(1, 5))->create([
                         'seller_id' => $user->id,
                         'quantity' => 20,
                         'status' => "available",
@@ -61,7 +61,7 @@ class BuyerProductControllerTest extends TestCase
                         $randomProductId = $seller->products->random()->id;
                         $totalPurchasedProducts++;
 
-                        factory(Transaction::class)->create([
+                        Transaction::factory()->create([
                             "quantity" => $this->faker->numberBetween(1, 3),
                             "buyer_id" => $user->id,
                             "product_id" => $randomProductId,     
