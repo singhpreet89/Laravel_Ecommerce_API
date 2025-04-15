@@ -16,19 +16,15 @@ class Filter
 
     public function __construct($filterAndSortOnColumns, $tableColumns)
     {
-        $this->filterAndSortOnColumns = $filterAndSortOnColumns;
-        $this->tableColumns = $tableColumns;
-        $this->excludeQueryParamsFromFilter =
-            explode(
-                ',',
-                env('SUPPORTED_QUERY_PARAMETERS', [
-                    'sort_by',  // 'sort_by' is used only for Sorting 
-                    'desc',     // 'desc' is used for Sorting in Reverse order
-                    'per_page', // 'per_page' is used in Pagination
-                    'unique',   // 'unique' is used in the Relevant controllers to fetch the unique results
-                    'page'      // 'page' is being used inside the Paginated links
-                ])
-            );
+        $this->filterAndSortOnColumns       = $filterAndSortOnColumns;
+        $this->tableColumns                 = $tableColumns;
+        $this->excludeQueryParamsFromFilter = explode(',', config('custom.SUPPORTED_QUERY_PARAMETERS', [
+            'sort_by',  // 'sort_by' is used only for Sorting 
+            'desc',     // 'desc' is used for Sorting in Reverse order
+            'per_page', // 'per_page' is used in Pagination
+            'unique',   // 'unique' is used in the Relevant controllers to fetch the unique results
+            'page'      // 'page' is being used inside the Paginated links
+        ]));
         $this->filterEnabledTableColumnCollection = collect();
     }
 
