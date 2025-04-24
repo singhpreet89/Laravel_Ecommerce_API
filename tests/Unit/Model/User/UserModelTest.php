@@ -2,9 +2,10 @@
 
 namespace Tests\Unit\Model\User;
 
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -135,5 +136,33 @@ class UserModelTest extends TestCase
 
         $trashedUser = User::withTrashed()->find($user->id);
         $this->assertNotNull($trashedUser->deleted_at);
+    }
+
+
+    public function testCacheDrivers()
+    {
+        $drivers = ['redis', 'database', 'array'];
+        $results = [];
+
+        foreach ($drivers as $driver) {
+            Cache::setDefaultDriver($driver);
+            
+            $start = microtime(true);
+            Cache::remember('test_key', 60, fn() => User::all());
+            $write = microtime(true) - $start;
+            
+            $start = microtime(true);
+            $data = Cache::get('test_key');
+            $read = microtime(true) - $start;
+            
+            $results[$driver] = [
+                'write' => $write * 1000,
+                'read' => $read * 1000
+            ];
+        }
+        
+        print_r($results);
+
+        $this->AssertTrue(true);
     }
 }

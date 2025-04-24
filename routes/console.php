@@ -22,6 +22,21 @@ Artisan::command('inspire', function () {
  * - Loop through each path, check if the file exists.
  * - If it does, clear its contents using a shell-safe echo command.
  */
+// Artisan::command('delete:logs', function () {
+//     $logFiles = [
+//         storage_path('logs/laravel.log'),
+//         storage_path('logs/scheduler.log'),
+//         storage_path('logs/worker.log'),
+//     ];
+
+//     foreach ($logFiles as $file) {
+//         if (file_exists($file)) {
+//             exec('echo "" > ' . escapeshellarg($file));
+//         }
+//     }
+// })->purpose('Delete logs every hour.')
+// ->hourly()
+// ->onOneServer();
 Artisan::command('delete:logs', function () {
     $logFiles = [
         storage_path('logs/laravel.log'),
@@ -29,30 +44,44 @@ Artisan::command('delete:logs', function () {
         storage_path('logs/worker.log'),
     ];
 
+    // foreach ($logFiles as $file) {
+    //     if (file_exists($file)) {
+    //         file_put_contents($file, "");                   // Truncate the file
+    //         file_put_contents($file, " \n", FILE_APPEND);   // Append a dummy line so Promtail sees a change
+
+    //         $this->info("Cleared and signaled: $file");
+    //     }
+    // }
     foreach ($logFiles as $file) {
         if (file_exists($file)) {
-            exec('echo "" > ' . escapeshellarg($file));
+            // Truncate in-place
+            $fp = fopen($file, 'w');
+            if ($fp) {
+                fwrite($fp, " \n"); // dummy line to trigger Promtail
+                fclose($fp);
+                $this->info("Truncated in-place: $file");
+            } else {
+                $this->error("Failed to truncate: $file");
+            }
         }
     }
-})->purpose('Delete logs every hour.')
-->hourly()
-->onOneServer();
+})->purpose('Truncate logs every hour (option 1).')->hourly()->onOneServer();
 
 /*******************************************************************************************************/
 // CUSTOM COMMAND: Prune Telescope every 3 days at 3am utc to remove records greater than 72hours
-Artisan::command('telescope:prune-custom', function () {
-    $hours = env('PRUNE_HOURS', 72);
+// Artisan::command('telescope:prune-custom', function () {
+//     $hours = env('PRUNE_HOURS', 72);
     
-    $this->info("Pruning Telescope entries older than {$hours} hours...");
-    \Illuminate\Support\Facades\Artisan::call('telescope:prune', [
-        '--hours' => $hours,
-    ]);
-    $this->info('Telescope pruned successfully.');
-})->purpose('Prune Telescope records older than configured hours.');
+//     $this->info("Pruning Telescope entries older than {$hours} hours...");
+//     \Illuminate\Support\Facades\Artisan::call('telescope:prune', [
+//         '--hours' => $hours,
+//     ]);
+//     $this->info('Telescope pruned successfully.');
+// })->purpose('Prune Telescope records older than configured hours.');
 
-// Prune Telescope every 3 days at 3am utc to remove records greater than 72hours
-Schedule::command('telescope:prune --hours=72')
-    ->cron('0 3 */' . env('PRUNE_FREQUENCY', 3) . ' * *')
-    ->timezone('UTC')
-    ->onOneServer();
+// // Prune Telescope every 3 days at 3am utc to remove records greater than 72hours
+// Schedule::command('telescope:prune --hours=72')
+//     ->cron('0 3 */' . env('PRUNE_FREQUENCY', 3) . ' * *')
+//     ->timezone('UTC')
+//     ->onOneServer();
 /*******************************************************************************************************/

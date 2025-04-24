@@ -1,0 +1,549 @@
+# openapi: 3.1.0
+# info:
+#   title: Laravel Marketplace API
+#   version: 1.0.0
+#   description: API documentation for the Laravel-based marketplace backend.
+# paths:
+#   /api/users:
+#     get:
+#       summary: List all users
+#       tags: [Users]
+#       responses:
+#         '200': { description: List of users. }
+#     post:
+#       summary: Create a new user
+#       tags: [Users]
+#       responses:
+#         '201': { description: User created. }
+
+#   /api/users/{id}:
+#     get:
+#       summary: Get user by ID
+#       tags: [Users]
+#       responses:
+#         '200': { description: User found. }
+#     put:
+#       summary: Update user
+#       tags: [Users]
+#       responses:
+#         '200': { description: User updated. }
+#     delete:
+#       summary: Delete user
+#       tags: [Users]
+#       responses:
+#         '204': { description: User deleted. }
+
+#   /api/buyers:
+#     get:
+#       summary: List buyers
+#       tags: [Buyers]
+#       responses:
+#         '200': { description: List of buyers. }
+
+#   /api/buyers/{id}:
+#     get:
+#       summary: Get buyer
+#       tags: [Buyers]
+#       responses:
+#         '200': { description: Buyer found. }
+
+#   /api/buyers/{buyerId}/transactions:
+#     get:
+#       summary: List buyer's transactions
+#       tags: [Buyers]
+#       responses:
+#         '200': { description: Transactions found. }
+
+#   /api/buyers/{buyerId}/products:
+#     get:
+#       summary: List buyer's products
+#       tags: [Buyers]
+#       responses:
+#         '200': { description: Products found. }
+
+#   /api/buyers/{buyerId}/sellers:
+#     get:
+#       summary: List buyer's sellers
+#       tags: [Buyers]
+#       responses:
+#         '200': { description: Sellers found. }
+
+#   /api/buyers/{buyerId}/categories:
+#     get:
+#       summary: List buyer's categories
+#       tags: [Buyers]
+#       responses:
+#         '200': { description: Categories found. }
+
+#   /api/sellers:
+#     get:
+#       summary: List sellers
+#       tags: [Sellers]
+#       responses:
+#         '200': { description: Sellers listed. }
+
+#   /api/sellers/{id}:
+#     get:
+#       summary: Get seller by ID
+#       tags: [Sellers]
+#       responses:
+#         '200': { description: Seller found. }
+
+#   /api/sellers/{sellerId}/transactions:
+#     get:
+#       summary: List seller's transactions
+#       tags: [Sellers]
+#       responses:
+#         '200': { description: Transactions listed. }
+
+#   /api/sellers/{sellerId}/categories:
+#     get:
+#       summary: List seller's categories
+#       tags: [Sellers]
+#       responses:
+#         '200': { description: Categories listed. }
+
+#   /api/sellers/{sellerId}/buyers:
+#     get:
+#       summary: List seller's buyers
+#       tags: [Sellers]
+#       responses:
+#         '200': { description: Buyers listed. }
+
+#   /api/sellers/{sellerId}/products:
+#     get:
+#       summary: List seller's products
+#       tags: [Sellers]
+#       responses:
+#         '200': { description: Products listed. }
+#     post:
+#       summary: Create a product for seller
+#       tags: [Sellers]
+#       responses:
+#         '201': { description: Product created. }
+
+#   /api/sellers/{sellerId}/products/{id}:
+#     put:
+#       summary: Update seller's product
+#       tags: [Sellers]
+#       responses:
+#         '200': { description: Product updated. }
+#     delete:
+#       summary: Delete seller's product
+#       tags: [Sellers]
+#       responses:
+#         '204': { description: Product deleted. }
+
+#   /api/categories:
+#     get:
+#       summary: List categories
+#       tags: [Categories]
+#       responses:
+#         '200': { description: Categories listed. }
+#     post:
+#       summary: Create a new category
+#       tags: [Categories]
+#       responses:
+#         '201': { description: Category created. }
+
+#   /api/categories/{id}:
+#     get:
+#       summary: Get category
+#       tags: [Categories]
+#       responses:
+#         '200': { description: Category details. }
+#     put:
+#       summary: Update category
+#       tags: [Categories]
+#       responses:
+#         '200': { description: Category updated. }
+#     delete:
+#       summary: Delete category
+#       tags: [Categories]
+#       responses:
+#         '204': { description: Category deleted. }
+
+#   /api/categories/{categoryId}/products:
+#     get:
+#       summary: List products in category
+#       tags: [Categories]
+#       responses:
+#         '200': { description: Products listed. }
+
+#   /api/categories/{categoryId}/sellers:
+#     get:
+#       summary: List sellers in category
+#       tags: [Categories]
+#       responses:
+#         '200': { description: Sellers listed. }
+
+#   /api/categories/{categoryId}/buyers:
+#     get:
+#       summary: List buyers in category
+#       tags: [Categories]
+#       responses:
+#         '200': { description: Buyers listed. }
+
+#   /api/categories/{categoryId}/transactions:
+#     get:
+#       summary: List transactions in category
+#       tags: [Categories]
+#       responses:
+#         '200': { description: Transactions listed. }
+
+#   /api/products:
+#     get:
+#       summary: List products
+#       tags: [Products]
+#       responses:
+#         '200': { description: Product list. }
+
+#   /api/products/{id}:
+#     get:
+#       summary: Get product
+#       tags: [Products]
+#       responses:
+#         '200': { description: Product found. }
+
+#   /api/products/{productId}/transactions:
+#     get:
+#       summary: List transactions for a product
+#       tags: [Products]
+#       responses:
+#         '200': { description: Transactions listed. }
+
+#   /api/products/{productId}/buyers:
+#     get:
+#       summary: List buyers for a product
+#       tags: [Products]
+#       responses:
+#         '200': { description: Buyers listed. }
+
+#   /api/products/{productId}/categories:
+#     get:
+#       summary: Get product categories
+#       tags: [Products]
+#       responses:
+#         '200': { description: Categories listed. }
+#     put:
+#       summary: Update product categories
+#       tags: [Products]
+#       responses:
+#         '200': { description: Categories updated. }
+#     delete:
+#       summary: Remove product categories
+#       tags: [Products]
+#       responses:
+#         '204': { description: Categories removed. }
+
+#   /api/products/{productId}/buyers/{buyerId}/transactions:
+#     post:
+#       summary: Create transaction for product by buyer
+#       tags: [Transactions]
+#       responses:
+#         '201': { description: Transaction created. }
+
+#   /api/transactions:
+#     get:
+#       summary: List all transactions
+#       tags: [Transactions]
+#       responses:
+#         '200': { description: Transactions listed. }
+
+#   /api/transactions/{id}:
+#     get:
+#       summary: Get transaction
+#       tags: [Transactions]
+#       responses:
+#         '200': { description: Transaction found. }
+
+#   /api/transactions/{transactionId}/categories:
+#     get:
+#       summary: Get transaction categories
+#       tags: [Transactions]
+#       responses:
+#         '200': { description: Categories listed. }
+
+#   /api/transactions/{transactionId}/sellers:
+#     get:
+#       summary: Get transaction sellers
+#       tags: [Transactions]
+#       responses:
+#         '200': { description: Sellers listed. }
+
+#////////////////////////////////////////////////////////////////////////////////
+
+openapi: 3.1.0
+info:
+  title: Laravel Ecommerce API
+  version: 1.0.0
+  description: API documentation for the Laravel-based marketplace backend.
+paths:
+  /api/users:
+    get:
+      summary: List all users
+      tags: [Users]
+      responses:
+        '200': { description: List of users. }
+    post:
+      summary: Create a new user
+      tags: [Users]
+      responses:
+        '201': { description: User created. }
+
+  /api/users/{id}:
+    get:
+      summary: Get user by ID
+      tags: [Users]
+      responses:
+        '200': { description: User found. }
+    put:
+      summary: Update user
+      tags: [Users]
+      responses:
+        '200': { description: User updated. }
+    delete:
+      summary: Delete user
+      tags: [Users]
+      responses:
+        '204': { description: User deleted. }
+
+  /api/buyers:
+    get:
+      summary: List buyers
+      tags: [Buyers]
+      responses:
+        '200': { description: List of buyers. }
+
+  /api/buyers/{id}:
+    get:
+      summary: Get buyer
+      tags: [Buyers]
+      responses:
+        '200': { description: Buyer found. }
+
+  /api/buyers/{buyerId}/transactions:
+    get:
+      summary: List buyer's transactions
+      tags: [Buyers]
+      responses:
+        '200': { description: Transactions found. }
+
+  /api/buyers/{buyerId}/products:
+    get:
+      summary: List buyer's products
+      tags: [Buyers]
+      responses:
+        '200': { description: Products found. }
+
+  /api/buyers/{buyerId}/sellers:
+    get:
+      summary: List buyer's sellers
+      tags: [Buyers]
+      responses:
+        '200': { description: Sellers found. }
+
+  /api/buyers/{buyerId}/categories:
+    get:
+      summary: List buyer's categories
+      tags: [Buyers]
+      responses:
+        '200': { description: Categories found. }
+
+  /api/sellers:
+    get:
+      summary: List sellers
+      tags: [Sellers]
+      responses:
+        '200': { description: Sellers listed. }
+
+  /api/sellers/{id}:
+    get:
+      summary: Get seller by ID
+      tags: [Sellers]
+      responses:
+        '200': { description: Seller found. }
+
+  /api/sellers/{sellerId}/transactions:
+    get:
+      summary: List seller's transactions
+      tags: [Sellers]
+      responses:
+        '200': { description: Transactions listed. }
+
+  /api/sellers/{sellerId}/categories:
+    get:
+      summary: List seller's categories
+      tags: [Sellers]
+      responses:
+        '200': { description: Categories listed. }
+
+  /api/sellers/{sellerId}/buyers:
+    get:
+      summary: List seller's buyers
+      tags: [Sellers]
+      responses:
+        '200': { description: Buyers listed. }
+
+  /api/sellers/{sellerId}/products:
+    get:
+      summary: List seller's products
+      tags: [Sellers]
+      responses:
+        '200': { description: Products listed. }
+    post:
+      summary: Create a product for seller
+      tags: [Sellers]
+      responses:
+        '201': { description: Product created. }
+
+  /api/sellers/{sellerId}/products/{id}:
+    put:
+      summary: Update seller's product
+      tags: [Sellers]
+      responses:
+        '200': { description: Product updated. }
+    delete:
+      summary: Delete seller's product
+      tags: [Sellers]
+      responses:
+        '204': { description: Product deleted. }
+
+  /api/categories:
+    get:
+      summary: List categories
+      tags: [Categories]
+      responses:
+        '200': { description: Categories listed. }
+    post:
+      summary: Create a new category
+      tags: [Categories]
+      responses:
+        '201': { description: Category created. }
+
+  /api/categories/{id}:
+    get:
+      summary: Get category
+      tags: [Categories]
+      responses:
+        '200': { description: Category details. }
+    put:
+      summary: Update category
+      tags: [Categories]
+      responses:
+        '200': { description: Category updated. }
+    delete:
+      summary: Delete category
+      tags: [Categories]
+      responses:
+        '204': { description: Category deleted. }
+
+  /api/categories/{categoryId}/products:
+    get:
+      summary: List products in category
+      tags: [Categories]
+      responses:
+        '200': { description: Products listed. }
+
+  /api/categories/{categoryId}/sellers:
+    get:
+      summary: List sellers in category
+      tags: [Categories]
+      responses:
+        '200': { description: Sellers listed. }
+
+  /api/categories/{categoryId}/buyers:
+    get:
+      summary: List buyers in category
+      tags: [Categories]
+      responses:
+        '200': { description: Buyers listed. }
+
+  /api/categories/{categoryId}/transactions:
+    get:
+      summary: List transactions in category
+      tags: [Categories]
+      responses:
+        '200': { description: Transactions listed. }
+
+  /api/products:
+    get:
+      summary: List products
+      tags: [Products]
+      responses:
+        '200': { description: Product list. }
+
+  /api/products/{id}:
+    get:
+      summary: Get product
+      tags: [Products]
+      responses:
+        '200': { description: Product found. }
+
+  /api/products/{productId}/transactions:
+    get:
+      summary: List transactions for a product
+      tags: [Products]
+      responses:
+        '200': { description: Transactions listed. }
+
+  /api/products/{productId}/buyers:
+    get:
+      summary: List buyers for a product
+      tags: [Products]
+      responses:
+        '200': { description: Buyers listed. }
+
+  /api/products/{productId}/categories:
+    get:
+      summary: Get product categories
+      tags: [Products]
+      responses:
+        '200': { description: Categories listed. }
+    put:
+      summary: Update product categories
+      tags: [Products]
+      responses:
+        '200': { description: Categories updated. }
+    delete:
+      summary: Remove product categories
+      tags: [Products]
+      responses:
+        '204': { description: Categories removed. }
+
+  /api/products/{productId}/buyers/{buyerId}/transactions:
+    post:
+      summary: Create transaction for product by buyer
+      tags: [Transactions]
+      responses:
+        '201': { description: Transaction created. }
+
+  /api/transactions:
+    get:
+      summary: List all transactions
+      tags: [Transactions]
+      responses:
+        '200': { description: Transactions listed. }
+
+  /api/transactions/{id}:
+    get:
+      summary: Get transaction
+      tags: [Transactions]
+      responses:
+        '200': { description: Transaction found. }
+
+  /api/transactions/{transactionId}/categories:
+    get:
+      summary: Get transaction categories
+      tags: [Transactions]
+      responses:
+        '200': { description: Categories listed. }
+
+  /api/transactions/{transactionId}/sellers:
+    get:
+      summary: Get transaction sellers
+      tags: [Transactions]
+      responses:
+        '200': { description: Sellers listed. }
+components:
+  schemas: {}
