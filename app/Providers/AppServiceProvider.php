@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use App\Services\Pagination\PaginationService;
 use App\Services\FilterAndSort\FilterAndSortService;
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (env('APP_ENV') === 'production' || request()->header('X-Forwarded-Proto') === 'https') {
+            URL::forceScheme('https');
+        }
     }
 }
