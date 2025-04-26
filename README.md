@@ -62,6 +62,7 @@ php artisan db:seed
 - **Events**
 - **Soft deletes**
 - **Resources**
+= **Encrypted Id's**
 - **HATEOAS**
 - **Reflection Classes**
 - **Unit Testing**

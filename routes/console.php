@@ -69,19 +69,19 @@ Artisan::command('delete:logs', function () {
 
 /*******************************************************************************************************/
 // CUSTOM COMMAND: Prune Telescope every 3 days at 3am utc to remove records greater than 72hours
-// Artisan::command('telescope:prune-custom', function () {
-//     $hours = env('PRUNE_HOURS', 72);
+Artisan::command('telescope:prune-custom', function () {
+    $hours = config('constants.PRUNE_HOURS'); // Default prune hours for Telescope
     
-//     $this->info("Pruning Telescope entries older than {$hours} hours...");
-//     \Illuminate\Support\Facades\Artisan::call('telescope:prune', [
-//         '--hours' => $hours,
-//     ]);
-//     $this->info('Telescope pruned successfully.');
-// })->purpose('Prune Telescope records older than configured hours.');
+    $this->info("Pruning Telescope entries older than {$hours} hours...");
+    \Illuminate\Support\Facades\Artisan::call('telescope:prune', [
+        '--hours' => $hours,
+    ]);
+    $this->info('Telescope pruned successfully.');
+})->purpose('Prune Telescope records older than configured hours.');
 
-// // Prune Telescope every 3 days at 3am utc to remove records greater than 72hours
-// Schedule::command('telescope:prune --hours=72')
-//     ->cron('0 3 */' . env('PRUNE_FREQUENCY', 3) . ' * *')
-//     ->timezone('UTC')
-//     ->onOneServer();
+// Prune Telescope every 3 days at 3am utc to remove records greater than 72hours
+Schedule::command("telescope:prune --hours=$hours")
+    ->cron('0 3 */' . config('constants.PRUNE_FREQUENCY') . ' * *')
+    ->timezone('UTC')
+    ->onOneServer();
 /*******************************************************************************************************/
