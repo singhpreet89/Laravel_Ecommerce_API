@@ -13,7 +13,7 @@ class CategoryCollection extends JsonResource
     public function toArray(Request $request) : array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->encrypted_id,
             'name' => $this->name,
             'description' => $this->description,
             'created_at' => isset($this->created_at) ? (string) $this->created_at : null,
@@ -22,31 +22,31 @@ class CategoryCollection extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => route('categories.show', $this->id),
+                    'href' => route('categories.show', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'category.buyers(Unique)',
-                    'href' => route('categories.buyers.index', $this->id) . '?unique=true',
+                    'href' => route('categories.buyers.index', $this->encrypted_id) . '?unique=true',
                 ],
                 [
                     'rel' => 'category.buyers',
-                    'href' => route('categories.buyers.index', $this->id),
+                    'href' => route('categories.buyers.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'category.products',
-                    'href' => route('categories.products.index', $this->id),
+                    'href' => route('categories.products.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'category.seller(Unique)',
-                    'href' => route('categories.sellers.index', $this->id) . '?unique=true',
+                    'href' => route('categories.sellers.index', $this->encrypted_id) . '?unique=true',
                 ],
                 [
                     'rel' => 'category.seller',
-                    'href' => route('categories.sellers.index', $this->id),
+                    'href' => route('categories.sellers.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'category.transactions',
-                    'href' => route('categories.transactions.index', $this->id),
+                    'href' => route('categories.transactions.index', $this->encrypted_id),
                 ],
             ],
         ];

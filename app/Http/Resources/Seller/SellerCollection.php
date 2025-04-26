@@ -13,7 +13,7 @@ class SellerCollection extends JsonResource
     public function toArray(Request $request) : array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->encrypted_id,
             'name' => $this->name,
             'email' => $this->email,
             'verified' => (int) $this->verified,
@@ -23,31 +23,31 @@ class SellerCollection extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => route('sellers.show', $this->id),
+                    'href' => route('sellers.show', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'seller.buyers(Unique)',
-                    'href' => route('sellers.buyers.index', $this->id) . '?unique=true',
+                    'href' => route('sellers.buyers.index', $this->encrypted_id) . '?unique=true',
                 ],
                 [
                     'rel' => 'seller.buyers',
-                    'href' => route('sellers.buyers.index', $this->id),
+                    'href' => route('sellers.buyers.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'seller.categories(Unique)',
-                    'href' => route('sellers.categories.index', $this->id) . '?unique=true',
+                    'href' => route('sellers.categories.index', $this->encrypted_id) . '?unique=true',
                 ],
                 [
                     'rel' => 'seller.categories',
-                    'href' => route('sellers.categories.index', $this->id),
+                    'href' => route('sellers.categories.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'seller.products',
-                    'href' => route('sellers.products.index', $this->id),
+                    'href' => route('sellers.products.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'seller.transactions',
-                    'href' => route('sellers.transactions.index', $this->id),
+                    'href' => route('sellers.transactions.index', $this->encrypted_id),
                 ],
             ],
         ];

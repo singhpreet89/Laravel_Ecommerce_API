@@ -13,7 +13,7 @@ class SellerResource extends JsonResource
     public function toArray(Request $request) : array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->encrypted_id,
             'name' => $this->name,
             'email' => $this->email,
             'verified' => (int) $this->verified,

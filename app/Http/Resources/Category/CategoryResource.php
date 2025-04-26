@@ -13,7 +13,7 @@ class CategoryResource extends JsonResource
     public function toArray(Request $request) : array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->encrypted_id,
             'name' => $this->name,
             'description' => $this->description,
             'created_at' => isset($this->created_at) ? (string) $this->created_at : null,

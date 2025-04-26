@@ -13,7 +13,7 @@ class UserCollection extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->encrypted_id,
             'name' => $this->name,
             'email' => $this->email,
             'verified' => (int) $this->verified,
@@ -24,7 +24,7 @@ class UserCollection extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => route('users.show', $this->id),
+                    'href' => route('users.show', $this->encrypted_id),
                 ],
             ],
         ];

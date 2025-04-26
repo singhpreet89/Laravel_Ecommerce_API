@@ -13,7 +13,7 @@ class ProductCollection extends JsonResource
     public function toArray(Request $request) : array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->encrypted_id,
             'seller_id' => $this->seller_id,
             'name' => $this->name,
             'description' => $this->description,
@@ -26,15 +26,15 @@ class ProductCollection extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => route('products.show', $this->id),
+                    'href' => route('products.show', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'product.buyers',
-                    'href' => route('products.buyers.index', $this->id),
+                    'href' => route('products.buyers.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'product.categories',
-                    'href' => route('products.categories.index', $this->id),
+                    'href' => route('products.categories.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'product.seller',
@@ -42,7 +42,7 @@ class ProductCollection extends JsonResource
                 ],
                 [
                     'rel' => 'product.transactions',
-                    'href' => route('products.transactions.index', $this->id),
+                    'href' => route('products.transactions.index', $this->encrypted_id),
                 ],
             ],
         ];

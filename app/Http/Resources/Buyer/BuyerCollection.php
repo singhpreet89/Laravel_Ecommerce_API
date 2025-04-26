@@ -13,7 +13,7 @@ class BuyerCollection extends JsonResource
     public function toArray(Request $request) : array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->encrypted_id,
             'name' => $this->name,
             'email' => $this->email,
             'verified' => (int) $this->verified,
@@ -23,27 +23,27 @@ class BuyerCollection extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => route('buyers.show', $this->id),
+                    'href' => route('buyers.show', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'buyer.categories',
-                    'href' => route('buyers.categories.index', $this->id),
+                    'href' => route('buyers.categories.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'buyer.products',
-                    'href' => route('buyers.products.index', $this->id),
+                    'href' => route('buyers.products.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'buyer.sellers(Unique)',
-                    'href' => route('buyers.sellers.index', $this->id) . '?unique=true',
+                    'href' => route('buyers.sellers.index', $this->encrypted_id) . '?unique=true',
                 ],
                 [
                     'rel' => 'buyer.sellers',
-                    'href' => route('buyers.sellers.index', $this->id),
+                    'href' => route('buyers.sellers.index', $this->encrypted_id),
                 ],
                 [
                     'rel' => 'buyer.transactions',
-                    'href' => route('buyers.transactions.index', $this->id),
+                    'href' => route('buyers.transactions.index', $this->encrypted_id),
                 ],
             ],
         ];
