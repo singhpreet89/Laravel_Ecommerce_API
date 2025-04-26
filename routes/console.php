@@ -68,10 +68,10 @@ Artisan::command('delete:logs', function () {
 })->purpose('Truncate logs every hour (option 1).')->hourly()->onOneServer();
 
 /*******************************************************************************************************/
+$hours = config('constants.PRUNE_HOURS'); // Default prune hours for Telescope prune command
+
 // CUSTOM COMMAND: Prune Telescope every 3 days at 3am utc to remove records greater than 72hours
-Artisan::command('telescope:prune-custom', function () {
-    $hours = config('constants.PRUNE_HOURS'); // Default prune hours for Telescope
-    
+Artisan::command('telescope:prune-custom', function () use($hours) {
     $this->info("Pruning Telescope entries older than {$hours} hours...");
     \Illuminate\Support\Facades\Artisan::call('telescope:prune', [
         '--hours' => $hours,
