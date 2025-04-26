@@ -64,5 +64,6 @@ php artisan db:seed
 - **Resources**
 = **Encrypted Id's**
 - **HATEOAS**
+- **API Versioning**
 - **Reflection Classes**
 - **Unit Testing**
