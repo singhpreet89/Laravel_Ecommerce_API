@@ -1,417 +1,143 @@
-# openapi: 3.1.0
-# info:
-#   title: Laravel Marketplace API
-#   version: 1.0.0
-#   description: API documentation for the Laravel-based marketplace backend.
-# paths:
-#   /api/v1/users:
-#     get:
-#       summary: List all users
-#       tags: [Users]
-#       responses:
-#         '200': { description: List of users. }
-#     post:
-#       summary: Create a new user
-#       tags: [Users]
-#       responses:
-#         '201': { description: User created. }
-
-#   /api/v1/users/{id}:
-#     get:
-#       summary: Get user by ID
-#       tags: [Users]
-#       responses:
-#         '200': { description: User found. }
-#     put:
-#       summary: Update user
-#       tags: [Users]
-#       responses:
-#         '200': { description: User updated. }
-#     delete:
-#       summary: Delete user
-#       tags: [Users]
-#       responses:
-#         '204': { description: User deleted. }
-
-#   /api/v1/buyers:
-#     get:
-#       summary: List buyers
-#       tags: [Buyers]
-#       responses:
-#         '200': { description: List of buyers. }
-
-#   /api/v1/buyers/{id}:
-#     get:
-#       summary: Get buyer
-#       tags: [Buyers]
-#       responses:
-#         '200': { description: Buyer found. }
-
-#   /api/v1/buyers/{buyerId}/transactions:
-#     get:
-#       summary: List buyer's transactions
-#       tags: [Buyers]
-#       responses:
-#         '200': { description: Transactions found. }
-
-#   /api/v1/buyers/{buyerId}/products:
-#     get:
-#       summary: List buyer's products
-#       tags: [Buyers]
-#       responses:
-#         '200': { description: Products found. }
-
-#   /api/v1/buyers/{buyerId}/sellers:
-#     get:
-#       summary: List buyer's sellers
-#       tags: [Buyers]
-#       responses:
-#         '200': { description: Sellers found. }
-
-#   /api/v1/buyers/{buyerId}/categories:
-#     get:
-#       summary: List buyer's categories
-#       tags: [Buyers]
-#       responses:
-#         '200': { description: Categories found. }
-
-#   /api/v1/sellers:
-#     get:
-#       summary: List sellers
-#       tags: [Sellers]
-#       responses:
-#         '200': { description: Sellers listed. }
-
-#   /api/v1/sellers/{id}:
-#     get:
-#       summary: Get seller by ID
-#       tags: [Sellers]
-#       responses:
-#         '200': { description: Seller found. }
-
-#   /api/v1/sellers/{sellerId}/transactions:
-#     get:
-#       summary: List seller's transactions
-#       tags: [Sellers]
-#       responses:
-#         '200': { description: Transactions listed. }
-
-#   /api/v1/sellers/{sellerId}/categories:
-#     get:
-#       summary: List seller's categories
-#       tags: [Sellers]
-#       responses:
-#         '200': { description: Categories listed. }
-
-#   /api/v1/sellers/{sellerId}/buyers:
-#     get:
-#       summary: List seller's buyers
-#       tags: [Sellers]
-#       responses:
-#         '200': { description: Buyers listed. }
-
-#   /api/v1/sellers/{sellerId}/products:
-#     get:
-#       summary: List seller's products
-#       tags: [Sellers]
-#       responses:
-#         '200': { description: Products listed. }
-#     post:
-#       summary: Create a product for seller
-#       tags: [Sellers]
-#       responses:
-#         '201': { description: Product created. }
-
-#   /api/v1/sellers/{sellerId}/products/{id}:
-#     put:
-#       summary: Update seller's product
-#       tags: [Sellers]
-#       responses:
-#         '200': { description: Product updated. }
-#     delete:
-#       summary: Delete seller's product
-#       tags: [Sellers]
-#       responses:
-#         '204': { description: Product deleted. }
-
-#   /api/v1/categories:
-#     get:
-#       summary: List categories
-#       tags: [Categories]
-#       responses:
-#         '200': { description: Categories listed. }
-#     post:
-#       summary: Create a new category
-#       tags: [Categories]
-#       responses:
-#         '201': { description: Category created. }
-
-#   /api/v1/categories/{id}:
-#     get:
-#       summary: Get category
-#       tags: [Categories]
-#       responses:
-#         '200': { description: Category details. }
-#     put:
-#       summary: Update category
-#       tags: [Categories]
-#       responses:
-#         '200': { description: Category updated. }
-#     delete:
-#       summary: Delete category
-#       tags: [Categories]
-#       responses:
-#         '204': { description: Category deleted. }
-
-#   /api/v1/categories/{categoryId}/products:
-#     get:
-#       summary: List products in category
-#       tags: [Categories]
-#       responses:
-#         '200': { description: Products listed. }
-
-#   /api/v1/categories/{categoryId}/sellers:
-#     get:
-#       summary: List sellers in category
-#       tags: [Categories]
-#       responses:
-#         '200': { description: Sellers listed. }
-
-#   /api/v1/categories/{categoryId}/buyers:
-#     get:
-#       summary: List buyers in category
-#       tags: [Categories]
-#       responses:
-#         '200': { description: Buyers listed. }
-
-#   /api/v1/categories/{categoryId}/transactions:
-#     get:
-#       summary: List transactions in category
-#       tags: [Categories]
-#       responses:
-#         '200': { description: Transactions listed. }
-
-#   /api/v1/products:
-#     get:
-#       summary: List products
-#       tags: [Products]
-#       responses:
-#         '200': { description: Product list. }
-
-#   /api/v1/products/{id}:
-#     get:
-#       summary: Get product
-#       tags: [Products]
-#       responses:
-#         '200': { description: Product found. }
-
-#   /api/v1/products/{productId}/transactions:
-#     get:
-#       summary: List transactions for a product
-#       tags: [Products]
-#       responses:
-#         '200': { description: Transactions listed. }
-
-#   /api/v1/products/{productId}/buyers:
-#     get:
-#       summary: List buyers for a product
-#       tags: [Products]
-#       responses:
-#         '200': { description: Buyers listed. }
-
-#   /api/v1/products/{productId}/categories:
-#     get:
-#       summary: Get product categories
-#       tags: [Products]
-#       responses:
-#         '200': { description: Categories listed. }
-#     put:
-#       summary: Update product categories
-#       tags: [Products]
-#       responses:
-#         '200': { description: Categories updated. }
-#     delete:
-#       summary: Remove product categories
-#       tags: [Products]
-#       responses:
-#         '204': { description: Categories removed. }
-
-#   /api/v1/products/{productId}/buyers/{buyerId}/transactions:
-#     post:
-#       summary: Create transaction for product by buyer
-#       tags: [Transactions]
-#       responses:
-#         '201': { description: Transaction created. }
-
-#   /api/v1/transactions:
-#     get:
-#       summary: List all transactions
-#       tags: [Transactions]
-#       responses:
-#         '200': { description: Transactions listed. }
-
-#   /api/v1/transactions/{id}:
-#     get:
-#       summary: Get transaction
-#       tags: [Transactions]
-#       responses:
-#         '200': { description: Transaction found. }
-
-#   /api/v1/transactions/{transactionId}/categories:
-#     get:
-#       summary: Get transaction categories
-#       tags: [Transactions]
-#       responses:
-#         '200': { description: Categories listed. }
-
-#   /api/v1/transactions/{transactionId}/sellers:
-#     get:
-#       summary: Get transaction sellers
-#       tags: [Transactions]
-#       responses:
-#         '200': { description: Sellers listed. }
-
-#////////////////////////////////////////////////////////////////////////////////
-
 openapi: 3.1.0
 info:
   title: Laravel Ecommerce API
   version: 1.0.0
   description: API documentation for the Laravel-based marketplace backend.
+
 paths:
+
+  # ─────────────────────────────────────────────────────────────
+  # Users
+  # ─────────────────────────────────────────────────────────────
   /api/v1/users:
     get:
       summary: List all users
       tags: [Users]
       responses:
-        '200': { description: List of users. }
+        '200':
+          description: List of users.
     post:
       summary: Create a new user
       tags: [Users]
       responses:
-        '201': { description: User created. }
+        '201':
+          description: User created.
 
-  /api/v1/users/{id}:
+  /api/v1/users/{user}:
+    parameters:
+      - name: user
+        in: path
+        required: true
+        description: "Encrypted user ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: Get user by ID
+      summary: Get user by encrypted ID
       tags: [Users]
       responses:
         '200': { description: User found. }
     put:
-      summary: Update user
+      summary: Update user by encrypted ID
       tags: [Users]
       responses:
         '200': { description: User updated. }
+    patch:
+      summary: Partially update user by encrypted ID
+      tags: [Users]
+      responses:
+        '200': { description: User partially updated. }
     delete:
-      summary: Delete user
+      summary: Delete user by encrypted ID
       tags: [Users]
       responses:
         '204': { description: User deleted. }
 
+  # ─────────────────────────────────────────────────────────────
+  # Buyers
+  # ─────────────────────────────────────────────────────────────
   /api/v1/buyers:
     get:
-      summary: List buyers
+      summary: List all buyers
       tags: [Buyers]
       responses:
         '200': { description: List of buyers. }
 
-  /api/v1/buyers/{id}:
+  /api/v1/buyers/{buyer}:
+    parameters:
+      - name: buyer
+        in: path
+        required: true
+        description: "Encrypted buyer ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: Get buyer
+      summary: Get buyer by encrypted ID
       tags: [Buyers]
       responses:
         '200': { description: Buyer found. }
 
-  /api/v1/buyers/{buyerId}/transactions:
+  /api/v1/buyers/{buyer}/categories:
+    parameters:
+      - name: buyer
+        in: path
+        required: true
+        description: "Encrypted buyer ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: List buyer's transactions
-      tags: [Buyers]
-      responses:
-        '200': { description: Transactions found. }
-
-  /api/v1/buyers/{buyerId}/products:
-    get:
-      summary: List buyer's products
-      tags: [Buyers]
-      responses:
-        '200': { description: Products found. }
-
-  /api/v1/buyers/{buyerId}/sellers:
-    get:
-      summary: List buyer's sellers
-      tags: [Buyers]
-      responses:
-        '200': { description: Sellers found. }
-
-  /api/v1/buyers/{buyerId}/categories:
-    get:
-      summary: List buyer's categories
+      summary: List categories for buyer by encrypted ID
       tags: [Buyers]
       responses:
         '200': { description: Categories found. }
 
-  /api/v1/sellers:
+  /api/v1/buyers/{buyer}/products:
+    parameters:
+      - name: buyer
+        in: path
+        required: true
+        description: "Encrypted buyer ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: List sellers
-      tags: [Sellers]
+      summary: List products for buyer by encrypted ID
+      tags: [Buyers]
       responses:
-        '200': { description: Sellers listed. }
+        '200': { description: Products found. }
 
-  /api/v1/sellers/{id}:
+  /api/v1/buyers/{buyer}/sellers:
+    parameters:
+      - name: buyer
+        in: path
+        required: true
+        description: "Encrypted buyer ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: Get seller by ID
-      tags: [Sellers]
+      summary: List sellers for buyer by encrypted ID
+      tags: [Buyers]
       responses:
-        '200': { description: Seller found. }
+        '200': { description: Sellers found. }
 
-  /api/v1/sellers/{sellerId}/transactions:
+  /api/v1/buyers/{buyer}/transactions:
+    parameters:
+      - name: buyer
+        in: path
+        required: true
+        description: "Encrypted buyer ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: List seller's transactions
-      tags: [Sellers]
+      summary: List transactions for buyer by encrypted ID
+      tags: [Buyers]
       responses:
-        '200': { description: Transactions listed. }
+        '200': { description: Transactions found. }
 
-  /api/v1/sellers/{sellerId}/categories:
-    get:
-      summary: List seller's categories
-      tags: [Sellers]
-      responses:
-        '200': { description: Categories listed. }
-
-  /api/v1/sellers/{sellerId}/buyers:
-    get:
-      summary: List seller's buyers
-      tags: [Sellers]
-      responses:
-        '200': { description: Buyers listed. }
-
-  /api/v1/sellers/{sellerId}/products:
-    get:
-      summary: List seller's products
-      tags: [Sellers]
-      responses:
-        '200': { description: Products listed. }
-    post:
-      summary: Create a product for seller
-      tags: [Sellers]
-      responses:
-        '201': { description: Product created. }
-
-  /api/v1/sellers/{sellerId}/products/{id}:
-    put:
-      summary: Update seller's product
-      tags: [Sellers]
-      responses:
-        '200': { description: Product updated. }
-    delete:
-      summary: Delete seller's product
-      tags: [Sellers]
-      responses:
-        '204': { description: Product deleted. }
-
+  # ─────────────────────────────────────────────────────────────
+  # Categories
+  # ─────────────────────────────────────────────────────────────
   /api/v1/categories:
     get:
-      summary: List categories
+      summary: List all categories
       tags: [Categories]
       responses:
         '200': { description: Categories listed. }
@@ -421,103 +147,330 @@ paths:
       responses:
         '201': { description: Category created. }
 
-  /api/v1/categories/{id}:
+  /api/v1/categories/{category}:
+    parameters:
+      - name: category
+        in: path
+        required: true
+        description: "Encrypted category ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: Get category
+      summary: Get category by encrypted ID
       tags: [Categories]
       responses:
         '200': { description: Category details. }
     put:
-      summary: Update category
+      summary: Update category by encrypted ID
       tags: [Categories]
       responses:
         '200': { description: Category updated. }
+    patch:
+      summary: Partially update category by encrypted ID
+      tags: [Categories]
+      responses:
+        '200': { description: Category partially updated. }
     delete:
-      summary: Delete category
+      summary: Delete category by encrypted ID
       tags: [Categories]
       responses:
         '204': { description: Category deleted. }
 
-  /api/v1/categories/{categoryId}/products:
+  /api/v1/categories/{category}/buyers:
+    parameters:
+      - name: category
+        in: path
+        required: true
+        description: "Encrypted category ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: List products in category
+      summary: List buyers for category by encrypted ID
       tags: [Categories]
       responses:
-        '200': { description: Products listed. }
+        '200': { description: Buyers found. }
 
-  /api/v1/categories/{categoryId}/sellers:
+  /api/v1/categories/{category}/products:
+    parameters:
+      - name: category
+        in: path
+        required: true
+        description: "Encrypted category ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: List sellers in category
+      summary: List products for category by encrypted ID
       tags: [Categories]
       responses:
-        '200': { description: Sellers listed. }
+        '200': { description: Products found. }
 
-  /api/v1/categories/{categoryId}/buyers:
+  /api/v1/categories/{category}/sellers:
+    parameters:
+      - name: category
+        in: path
+        required: true
+        description: "Encrypted category ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: List buyers in category
+      summary: List sellers for category by encrypted ID
       tags: [Categories]
       responses:
-        '200': { description: Buyers listed. }
+        '200': { description: Sellers found. }
 
-  /api/v1/categories/{categoryId}/transactions:
+  /api/v1/categories/{category}/transactions:
+    parameters:
+      - name: category
+        in: path
+        required: true
+        description: "Encrypted category ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: List transactions in category
+      summary: List transactions for category by encrypted ID
       tags: [Categories]
       responses:
-        '200': { description: Transactions listed. }
+        '200': { description: Transactions found. }
 
+  # ─────────────────────────────────────────────────────────────
+  # Products
+  # ─────────────────────────────────────────────────────────────
   /api/v1/products:
     get:
-      summary: List products
+      summary: List all products
       tags: [Products]
       responses:
         '200': { description: Product list. }
 
-  /api/v1/products/{id}:
+  /api/v1/products/{product}:
+    parameters:
+      - name: product
+        in: path
+        required: true
+        description: "Encrypted product ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: Get product
+      summary: Get product by encrypted ID
       tags: [Products]
       responses:
         '200': { description: Product found. }
 
-  /api/v1/products/{productId}/transactions:
+  /api/v1/products/{product}/buyers:
+    parameters:
+      - name: product
+        in: path
+        required: true
+        description: "Encrypted product ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: List transactions for a product
+      summary: List buyers for product by encrypted ID
       tags: [Products]
       responses:
-        '200': { description: Transactions listed. }
+        '200': { description: Buyers found. }
 
-  /api/v1/products/{productId}/buyers:
-    get:
-      summary: List buyers for a product
-      tags: [Products]
-      responses:
-        '200': { description: Buyers listed. }
-
-  /api/v1/products/{productId}/categories:
-    get:
-      summary: Get product categories
-      tags: [Products]
-      responses:
-        '200': { description: Categories listed. }
-    put:
-      summary: Update product categories
-      tags: [Products]
-      responses:
-        '200': { description: Categories updated. }
-    delete:
-      summary: Remove product categories
-      tags: [Products]
-      responses:
-        '204': { description: Categories removed. }
-
-  /api/v1/products/{productId}/buyers/{buyerId}/transactions:
+  /api/v1/products/{product}/buyers/{buyer}/transactions:
+    parameters:
+      - name: product
+        in: path
+        required: true
+        description: "Encrypted product ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+      - name: buyer
+        in: path
+        required: true
+        description: "Encrypted buyer ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     post:
-      summary: Create transaction for product by buyer
+      summary: Create a transaction for product by encrypted buyer ID
       tags: [Transactions]
       responses:
         '201': { description: Transaction created. }
 
+  /api/v1/products/{product}/categories:
+    parameters:
+      - name: product
+        in: path
+        required: true
+        description: "Encrypted product ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    get:
+      summary: List categories for product by encrypted ID
+      tags: [Products]
+      responses:
+        '200': { description: Categories listed. }
+
+  /api/v1/products/{product}/categories/{category}:
+    parameters:
+      - name: product
+        in: path
+        required: true
+        description: "Encrypted product ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+      - name: category
+        in: path
+        required: true
+        description: "Encrypted category ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    put:
+      summary: Update product–category link by encrypted IDs
+      tags: [Products]
+      responses:
+        '200': { description: Categories updated. }
+    patch:
+      summary: Partially update product–category link by encrypted IDs
+      tags: [Products]
+      responses:
+        '200': { description: Categories partially updated. }
+    delete:
+      summary: Remove product–category link by encrypted IDs
+      tags: [Products]
+      responses:
+        '204': { description: Categories removed. }
+
+  /api/v1/products/{product}/transactions:
+    parameters:
+      - name: product
+        in: path
+        required: true
+        description: "Encrypted product ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    get:
+      summary: List transactions for product by encrypted ID
+      tags: [Products]
+      responses:
+        '200': { description: Transactions listed. }
+
+  # ─────────────────────────────────────────────────────────────
+  # Sellers
+  # ─────────────────────────────────────────────────────────────
+  /api/v1/sellers:
+    get:
+      summary: List all sellers
+      tags: [Sellers]
+      responses:
+        '200': { description: Sellers listed. }
+
+  /api/v1/sellers/{seller}:
+    parameters:
+      - name: seller
+        in: path
+        required: true
+        description: "Encrypted seller ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    get:
+      summary: Get seller by encrypted ID
+      tags: [Sellers]
+      responses:
+        '200': { description: Seller found. }
+
+  /api/v1/sellers/{seller}/buyers:
+    parameters:
+      - name: seller
+        in: path
+        required: true
+        description: "Encrypted seller ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    get:
+      summary: List buyers for seller by encrypted ID
+      tags: [Sellers]
+      responses:
+        '200': { description: Buyers listed. }
+
+  /api/v1/sellers/{seller}/categories:
+    parameters:
+      - name: seller
+        in: path
+        required: true
+        description: "Encrypted seller ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    get:
+      summary: List categories for seller by encrypted ID
+      tags: [Sellers]
+      responses:
+        '200': { description: Categories listed. }
+
+  /api/v1/sellers/{seller}/products:
+    parameters:
+      - name: seller
+        in: path
+        required: true
+        description: "Encrypted seller ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    get:
+      summary: List products for seller by encrypted ID
+      tags: [Sellers]
+      responses:
+        '200': { description: Products listed. }
+    post:
+      summary: Create a product for seller by encrypted ID
+      tags: [Sellers]
+      responses:
+        '201': { description: Product created. }
+
+  /api/v1/sellers/{seller}/products/{product}:
+    parameters:
+      - name: seller
+        in: path
+        required: true
+        description: "Encrypted seller ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+      - name: product
+        in: path
+        required: true
+        description: "Encrypted product ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    get:
+      summary: Get seller’s product by encrypted IDs
+      tags: [Sellers]
+      responses:
+        '200': { description: Product found. }
+    put:
+      summary: Update seller’s product by encrypted IDs
+      tags: [Sellers]
+      responses:
+        '200': { description: Product updated. }
+    patch:
+      summary: Partially update seller’s product by encrypted IDs
+      tags: [Sellers]
+      responses:
+        '200': { description: Product partially updated. }
+    delete:
+      summary: Delete seller’s product by encrypted IDs
+      tags: [Sellers]
+      responses:
+        '204': { description: Product deleted. }
+
+  /api/v1/sellers/{seller}/transactions:
+    parameters:
+      - name: seller
+        in: path
+        required: true
+        description: "Encrypted seller ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
+    get:
+      summary: List transactions for seller by encrypted ID
+      tags: [Sellers]
+      responses:
+        '200': { description: Transactions listed. }
+
+  # ─────────────────────────────────────────────────────────────
+  # Transactions
+  # ─────────────────────────────────────────────────────────────
   /api/v1/transactions:
     get:
       summary: List all transactions
@@ -525,25 +478,51 @@ paths:
       responses:
         '200': { description: Transactions listed. }
 
-  /api/v1/transactions/{id}:
+  /api/v1/transactions/{transaction}:
+    parameters:
+      - name: transaction
+        in: path
+        required: true
+        description: "Encrypted transaction ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: Get transaction
+      summary: Get transaction by encrypted ID
       tags: [Transactions]
       responses:
         '200': { description: Transaction found. }
 
-  /api/v1/transactions/{transactionId}/categories:
+  /api/v1/transactions/{transaction}/categories:
+    parameters:
+      - name: transaction
+        in: path
+        required: true
+        description: "Encrypted transaction ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: Get transaction categories
+      summary: List categories for transaction by encrypted ID
       tags: [Transactions]
       responses:
         '200': { description: Categories listed. }
 
-  /api/v1/transactions/{transactionId}/sellers:
+  /api/v1/transactions/{transaction}/sellers:
+    parameters:
+      - name: transaction
+        in: path
+        required: true
+        description: "Encrypted transaction ID"
+        schema:
+          $ref: '#/components/schemas/encrypted_id'
     get:
-      summary: Get transaction sellers
+      summary: List sellers for transaction by encrypted ID
       tags: [Transactions]
       responses:
         '200': { description: Sellers listed. }
+
 components:
-  schemas: {}
+  schemas:
+    encrypted_id:
+      type: string
+      pattern: '^[A-Za-z0-9+/]+=*$'
+      description: "Encrypted ID"

@@ -1,4 +1,5 @@
 {
+    "name": "ecommerce_api",
     "private": true,
     "type": "module",
     "scripts": {
