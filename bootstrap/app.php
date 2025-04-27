@@ -1,15 +1,17 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Application;
+use Illuminate\Database\QueryException;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\QueryException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -23,6 +25,17 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        $exceptions->renderable(function (Throwable $e, $request){
+            if (file_exists(storage_path('framework/maintenance.php'))) {
+                return response()->json([
+                    'message' => 'Service is under maintenance.',
+                    'errors' => ['server' => ['The service is temporarily unavailable. Please try again later.']],
+                ], Response::HTTP_SERVICE_UNAVAILABLE); 
+            }
+        
+            return null; // Let Laravel handle other exceptions
+        });
+
         $exceptions->renderable(function (ModelNotFoundException $e, $request) {
             $model = strtolower(class_basename($e->getModel()));
             return response()->json([
