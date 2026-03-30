@@ -1,0 +1,25 @@
+.git/
+.gitignore/
+.github/
+.ai/
+.vscode/
+.idea/
+.devcontainer/
+node_modules
+vendor
+
+# Exclude docker-compose and Dockerfile
+*docker-compose*
+*Dockerfile*
+!Dockerfile-app-stg-aws-hch-kctl
+!Dockerfile.bitbucket
+
+# Makefile
+Makefile
+AGENTS.md
+boost.json
+readme.md
+*.DS_Store
+
+# Exclude debug bar
+storage/debugbar

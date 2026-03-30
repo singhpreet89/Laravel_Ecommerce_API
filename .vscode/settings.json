@@ -1,0 +1,9 @@
+{
+    "postman.settings.dotenv-detection-notification-visibility": false,
+
+    "LaravelExtraIntellisense.basePath": ".",
+    "LaravelExtraIntellisense.basePathForCode": "/var/www/html",
+    "LaravelExtraIntellisense.phpCommand": "docker compose exec -T -w /var/www/html app php -r \"{code}\"",
+
+    "intelephense.environment.phpVersion": "8.5.4"
+}

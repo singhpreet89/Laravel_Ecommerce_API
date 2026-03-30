@@ -19,10 +19,25 @@ yarn-error.log
 /.fleet
 /.idea
 /.nova
-/.vscode
+/.vscode/*
+!/.vscode/mcp.json
+!/.vscode/settings.json
 /.zed
 
+# Docker Configuration files
 *docker-compose*
 *Dockerfile*
 /docker-configuration
 *makefile*
+
+################## Laravel Boost ##################
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+/.agents
+/.github/copilot-instructions.md
+
+
+# Boost runtime
+.ai/cache/
+.ai/tmp/
