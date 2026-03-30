@@ -2,31 +2,30 @@
 
 namespace Tests\Unit\Model\User;
 
-use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Cache;
+use Tests\TestCase;
 
 class UserModelTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
     }
 
-    public function testAll() : void
+    public function test_all(): void
     {
         $numberOfUsers = 10;
         $users = User::factory()->count($numberOfUsers)->create();
-        $createdUsers = User::all(); 
+        $createdUsers = User::all();
 
         $this->assertEquals($users->count(), $createdUsers->count());
-        
-        for($i = 0; $i < $numberOfUsers; $i++) {
+
+        for ($i = 0; $i < $numberOfUsers; $i++) {
             $this->assertEquals(
                 [
                     $users[$i]->id,
@@ -52,7 +51,7 @@ class UserModelTest extends TestCase
         }
     }
 
-    public function testCreate() : void
+    public function test_create(): void
     {
         $user = User::factory()->create();
         $savedUser = User::find($user->id);
@@ -82,20 +81,20 @@ class UserModelTest extends TestCase
         );
 
         $this->assertEquals(null, $savedUser->deleted_at);
-        $this->assertArrayNotHasKey("password", $savedUserArray);
-        $this->assertArrayNotHasKey("remember_token", $savedUserArray);
-        $this->assertArrayNotHasKey("verification_token", $savedUserArray);
+        $this->assertArrayNotHasKey('password', $savedUserArray);
+        $this->assertArrayNotHasKey('remember_token', $savedUserArray);
+        $this->assertArrayNotHasKey('verification_token', $savedUserArray);
 
-        // Because 'password', 'remember_token', 'verification_token' will not be returned and 'deleted_at' will be returned
-        $this->assertCount(9, $savedUserArray);
+        // Because 'password', 'remember_token', 'verification_token' will not be returned, 'deleted_at' will be returned, and 'encrypted_id' is appended via ResolveTrait
+        $this->assertCount(10, $savedUserArray);
     }
 
-    public function testUpdate() : void
+    public function test_update(): void
     {
         $user = User::factory()->create();
-        
-        $user->name = "Jack Sparrow";
-        $user->email = "jack@sparrow.com"; 
+
+        $user->name = 'Jack Sparrow';
+        $user->email = 'jack@sparrow.com';
         $user->save();
 
         $savedUser = User::find($user->id);
@@ -115,7 +114,7 @@ class UserModelTest extends TestCase
         $this->assertEquals(null, $savedUser->deleted_at);
     }
 
-    public function testDelete() : void
+    public function test_delete(): void
     {
         $user = User::factory()->create();
         $deletedUser = $user->delete($user->id);
@@ -126,7 +125,7 @@ class UserModelTest extends TestCase
         $this->assertEquals(0, $totalUsers->count());
     }
 
-    public function testSoftDeletes() : void
+    public function test_soft_deletes(): void
     {
         $user = User::factory()->create();
         $user->delete();
@@ -138,29 +137,54 @@ class UserModelTest extends TestCase
         $this->assertNotNull($trashedUser->deleted_at);
     }
 
+    public function test_is_verified(): void
+    {
+        $verified = User::factory()->create(['verified' => User::VERIFIED_USER]);
+        $unverified = User::factory()->create(['verified' => User::UNVERIFIED_USER]);
 
-    public function testCacheDrivers()
+        $this->assertTrue($verified->isVerified());
+        $this->assertFalse($unverified->isVerified());
+    }
+
+    public function test_is_admin(): void
+    {
+        $admin = User::factory()->create(['admin' => User::ADMIN_USER]);
+        $regular = User::factory()->create(['admin' => User::REGULAR_USER]);
+
+        $this->assertTrue($admin->isAdmin());
+        $this->assertFalse($regular->isAdmin());
+    }
+
+    public function test_generate_verification_code(): void
+    {
+        $code = User::generateVerificationCode();
+
+        $this->assertIsString($code);
+        $this->assertEquals(40, strlen($code)); // bin2hex(random_bytes(20)) = 40 hex chars
+    }
+
+    public function test_cache_drivers()
     {
         $drivers = ['redis', 'database', 'array'];
         $results = [];
 
         foreach ($drivers as $driver) {
             Cache::setDefaultDriver($driver);
-            
+
             $start = microtime(true);
-            Cache::remember('test_key', 60, fn() => User::all());
+            Cache::remember('test_key', 60, fn () => User::all());
             $write = microtime(true) - $start;
-            
+
             $start = microtime(true);
             $data = Cache::get('test_key');
             $read = microtime(true) - $start;
-            
+
             $results[$driver] = [
                 'write' => $write * 1000,
-                'read' => $read * 1000
+                'read' => $read * 1000,
             ];
         }
-        
+
         print_r($results);
 
         $this->AssertTrue(true);

@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
+use App\Services\FilterAndSort\FilterAndSortService;
+use App\Services\Pagination\PaginationService;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
-use App\Services\Pagination\PaginationService;
-use App\Services\FilterAndSort\FilterAndSortService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,12 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind('FilterAndSortService', function() {
-            return new FilterAndSortService();
-        }); 
+        $this->app->bind('FilterAndSortService', function () {
+            return new FilterAndSortService;
+        });
 
-        $this->app->bind('PaginationService', function() {
-            return new PaginationService();
+        $this->app->bind('PaginationService', function () {
+            return new PaginationService;
         });
 
         if ($this->app->environment('local') && class_exists(\Laravel\Telescope\TelescopeServiceProvider::class)) {

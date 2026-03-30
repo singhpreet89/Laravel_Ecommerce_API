@@ -4,22 +4,23 @@ namespace App\Services\FilterAndSort;
 
 use App\Services\FilterAndSort\Filter\Filter;
 use App\Services\FilterAndSort\Sort\Sort;
-use ReflectionClass;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Eloquent\Model;
+use ReflectionClass;
 
 class FilterAndSortService
 {
     private $tableColumns;
+
     private $filterAndSortOnColumns;
 
     public function __construct()
     {
-       // 
+        //
     }
 
-    private function getColumns(Model $model) : void
+    private function getColumns(Model $model): void
     {
         $tableName = $model->getTable();
         $this->tableColumns = Schema::getColumnListing($tableName);
@@ -31,12 +32,14 @@ class FilterAndSortService
          **/
         $className = get_class($model);
         $reflection = new ReflectionClass($className);
-        $this->filterAndSortOnColumns = $reflection->getConstant('ENABLE_FILTER_AND_SORT_ON_COLUMNS');
+        $this->filterAndSortOnColumns = $reflection->hasConstant('ENABLE_FILTER_AND_SORT_ON_COLUMNS')
+            ? $reflection->getConstant('ENABLE_FILTER_AND_SORT_ON_COLUMNS')
+            : null;
     }
 
     // Receiving the Collection and Model instance
-    public function apply(Collection $collection, Model $model) : Collection
-    { 
+    public function apply(Collection $collection, Model $model): Collection
+    {
         $this->getColumns($model);
 
         // FILTERING
@@ -46,7 +49,7 @@ class FilterAndSortService
         // SORTING
         $sort = new Sort($this->filterAndSortOnColumns, $this->tableColumns);
         $filteredAndSortedCollection = $sort->apply($filteredCollection);
-        
+
         return $filteredAndSortedCollection;
     }
 }

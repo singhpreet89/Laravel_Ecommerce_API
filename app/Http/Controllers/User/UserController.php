@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cache;
-use App\Http\Resources\User\UserResource;
-use App\Http\Resources\User\UserCollection;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
-use App\Services\Pagination\PaginationFacade;
+use App\Http\Resources\User\UserCollection;
+use App\Http\Resources\User\UserResource;
+use App\Models\User;
 use App\Services\FilterAndSort\FilterAndSortFacade;
+use App\Services\Pagination\PaginationFacade;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    private const CACHE_KEY         = 'users';
-    private const USER_CACHE_KEY    = 'user.%d';
+    private const CACHE_KEY = 'users';
+
+    private const USER_CACHE_KEY = 'user.%d';
 
     /**
      * Helper method to generate single user cache key
@@ -35,8 +36,7 @@ class UserController extends Controller
         $start = microtime(true);
         $source = Cache::has(self::CACHE_KEY) ? 'cache' : 'database';
 
-        $users = Cache::remember(self::CACHE_KEY, config('constants.CACHE_TTL'), function () use($user) {
-            Log::info('Fetching users from database');
+        $users = Cache::remember(self::CACHE_KEY, config('constants.CACHE_TTL'), function () use ($user) {
             return $user->all();
         });
 
@@ -61,11 +61,11 @@ class UserController extends Controller
         $data['admin'] = User::REGULAR_USER;
 
         $user = User::create($data);    // Create is used in Mass assignment while Save() can be used without mass assignment and in the Update method
-        
+
         Cache::remember(self::CACHE_KEY, config('constants.CACHE_TTL'), function () {
             return User::all();
         });
-        
+
         return new UserResource($user);
     }
 
@@ -79,7 +79,8 @@ class UserController extends Controller
         $source = Cache::has($cacheKey) ? 'cache' : 'database';
 
         $user = Cache::remember($cacheKey, config('constants.CACHE_TTL'), function () use ($user) {
-            Log::info('Fetching user from database: ' . $user->id);
+            Log::info('Fetching user from database: '.$user->id);
+
             return $user->fresh();
         });
 
@@ -115,7 +116,7 @@ class UserController extends Controller
         $user->save();
 
         Cache::put(self::CACHE_KEY, User::all(), config('constants.CACHE_TTL'));
-        
+
         $cacheKey = $this->getUserCacheKey($user->id);
         Cache::put($cacheKey, $user->fresh(), config('constants.CACHE_TTL'));
 
@@ -130,7 +131,7 @@ class UserController extends Controller
         $user->delete();
 
         Cache::put(self::CACHE_KEY, User::all(), config('constants.CACHE_TTL'));
-        
+
         $cacheKey = $this->getUserCacheKey($user->id);
         Cache::forget($cacheKey);        // OR Cache::forget("user.{$user->id}");
 

@@ -1,30 +1,34 @@
 <?php
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Contracts\Encryption\EncryptException;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 /**
  * Encrypts or decrypts a string using AES-256-CBC with a static IV.
  * Identical plaintext ⇒ identical ciphertext
  */
-if (!function_exists('encryptDecrypt')) {
+if (! function_exists('encryptDecrypt')) {
     function encryptDecrypt(?string $payload, string $type = 'encrypt'): ?string
     {
         if ($payload === null) {
             return null;
         }
 
-        $rawKey         = config('app.key');
-        $key            = Str::startsWith($rawKey, 'base64:') ? base64_decode(substr($rawKey, 7), true) : $rawKey;
-        $initialVector  = config('constants.APP_IV');   // Static IV
-        $cipher         = 'AES-256-CBC';                // AES cipher
+        if (! in_array($type, ['encrypt', 'decrypt'], true)) {
+            return null;
+        }
+
+        $rawKey = config('app.key');
+        $key = Str::startsWith($rawKey, 'base64:') ? base64_decode(substr($rawKey, 7), true) : $rawKey;
+        $initialVector = config('constants.APP_IV');   // Static IV
+        $cipher = 'AES-256-CBC';                // AES cipher
 
         try {
             if ($type === 'encrypt') {
-               $cipherText = base64_encode(openssl_encrypt($payload, strtolower($cipher), $key, 0, $initialVector));
-    
+                $cipherText = base64_encode(openssl_encrypt($payload, strtolower($cipher), $key, 0, $initialVector));
+
                 if ($cipherText === false) {
                     throw new EncryptException('Could not encrypt the data.');
                 }
@@ -34,7 +38,7 @@ if (!function_exists('encryptDecrypt')) {
 
             if ($type === 'decrypt') {
                 $plaintext = openssl_decrypt(base64_decode($payload), strtolower($cipher), $key, 0, $initialVector);
-    
+
                 if ($plaintext === false) {
                     throw new DecryptException('Could not decrypt the data.');
                 }
@@ -42,9 +46,10 @@ if (!function_exists('encryptDecrypt')) {
                 return $plaintext;
             }
 
-            throw new \InvalidArgumentException('Type must be "encrypt" or "decrypt".');
-        } catch (\Exception $ex) {
+            return null;
+        } catch (Exception $ex) {
             Log::error($ex);
+
             return null;
         }
     }

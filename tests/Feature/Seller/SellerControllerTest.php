@@ -2,103 +2,100 @@
 
 namespace Tests\Feature\Seller;
 
-use App\Models\User;
-use App\Models\Seller;
 use App\Models\Product;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\Seller;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class SellerControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setup(): void
+    protected function setup(): void
     {
         parent::setup();
     }
 
     /**
-     *
      * @return void
      */
-    public function testIndex()
+    public function test_index()
     {
         $numberOfUsers = 20;
 
-        // Each created user might have purchased a product or not rand(0, 2) ensures that 
+        // Each created user might have purchased a product or not rand(0, 2) ensures that
         User::factory()->count($numberOfUsers)->create()->each(function ($user) {
             Product::factory()->count(rand(0, 2))->create([
-                "seller_id" => $user->id,
+                'seller_id' => $user->id,
             ]);
         });
-        
+
         $totalSellers = Seller::has('products')->count();
 
         $response = $this->getJson(route('sellers.index'));
 
         $response->assertOk();
-        $response->assertJsonCount($totalSellers, $key = "data");
+        $response->assertJsonCount($totalSellers, $key = 'data');
         $response->assertJsonStructure([
-            "data" => [
-                "*" => [
-                    "id",
-                    "name",
-                    "email",
-                    "verified",
-                    "created_at",
-                    "updated_at",
-                    "deleted_at",
-                    "links" => [
-                        "*" => [
-                            "rel",
-                            "href",
-                        ]
-                    ]
-                ]
+            'data' => [
+                '*' => [
+                    'id',
+                    'name',
+                    'email',
+                    'verified',
+                    'created_at',
+                    'updated_at',
+                    'deleted_at',
+                    'links' => [
+                        '*' => [
+                            'rel',
+                            'href',
+                        ],
+                    ],
+                ],
             ],
-            "links" => [
-                "first",
-                "last",
-                "prev",
-                "next"
+            'links' => [
+                'first',
+                'last',
+                'prev',
+                'next',
             ],
-            "meta" => [
-                "current_page",
-                "from",
-                "last_page",
-                "path",
-                "per_page",
-                "to",
-                "total"
-            ]
+            'meta' => [
+                'current_page',
+                'from',
+                'last_page',
+                'path',
+                'per_page',
+                'to',
+                'total',
+            ],
         ]);
     }
 
     /**
-     *
      * @return void
      */
-    public function testShow()
+    public function test_show()
     {
         $seller = User::factory()->create();
         Product::factory()->create([
-            "seller_id" => $seller->id,
+            'seller_id' => $seller->id,
         ]);
 
-        $response = $this->getJson(route('sellers.show', $seller->id));
+        $response = $this->getJson(route('sellers.show', $seller->encrypted_id));
 
         $response->assertOk();
         $response->assertJson([
-            "data" => [
-                "id" => $seller->id,
-                "name" => $seller->name,
-                "email" => $seller->email,
-                "verified" => (int) $seller->verified,
+            'data' => [
+                'id' => $seller->encrypted_id,
+                'name' => $seller->name,
+                'email' => $seller->email,
+                'verified' => (int) $seller->verified,
                 'created_at' => $seller->created_at,
                 'updated_at' => $seller->updated_at,
                 'deleted_at' => null,
-            ]
+            ],
         ]);
     }
 }
