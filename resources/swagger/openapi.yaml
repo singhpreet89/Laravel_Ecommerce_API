@@ -13,12 +13,24 @@ paths:
     get:
       summary: List all users
       tags: [Users]
+      parameters:
+        - $ref: '#/components/parameters/verified_query'
+        - $ref: '#/components/parameters/admin_query'
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200':
           description: List of users.
     post:
       summary: Create a new user
       tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_store_input'
       responses:
         '201':
           description: User created.
@@ -39,11 +51,32 @@ paths:
     put:
       summary: Update user by encrypted ID
       tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_update_input'
+            example:
+              name: Jane Doe Updated
+              email: jane.updated@example.com
+              password: secret123
+              password_confirmation: secret123
+              admin: false
       responses:
         '200': { description: User updated. }
     patch:
       summary: Partially update user by encrypted ID
       tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_update_input'
+            example:
+              name: Jane Partial
+              admin: true
       responses:
         '200': { description: User partially updated. }
     delete:
@@ -59,6 +92,11 @@ paths:
     get:
       summary: List all buyers
       tags: [Buyers]
+      parameters:
+        - $ref: '#/components/parameters/verified_query'
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: List of buyers. }
 
@@ -87,6 +125,10 @@ paths:
     get:
       summary: List categories for buyer by encrypted ID
       tags: [Buyers]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Categories found. }
 
@@ -101,6 +143,10 @@ paths:
     get:
       summary: List products for buyer by encrypted ID
       tags: [Buyers]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Products found. }
 
@@ -115,6 +161,11 @@ paths:
     get:
       summary: List sellers for buyer by encrypted ID
       tags: [Buyers]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
+        - $ref: '#/components/parameters/unique_query'
       responses:
         '200': { description: Sellers found. }
 
@@ -129,6 +180,10 @@ paths:
     get:
       summary: List transactions for buyer by encrypted ID
       tags: [Buyers]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Transactions found. }
 
@@ -139,11 +194,21 @@ paths:
     get:
       summary: List all categories
       tags: [Categories]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Categories listed. }
     post:
       summary: Create a new category
       tags: [Categories]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/category_store_input'
       responses:
         '201': { description: Category created. }
 
@@ -163,11 +228,28 @@ paths:
     put:
       summary: Update category by encrypted ID
       tags: [Categories]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/category_update_input'
+            example:
+              name: Electronics and Gadgets
+              description: Consumer devices, accessories, and smart gear.
       responses:
         '200': { description: Category updated. }
     patch:
       summary: Partially update category by encrypted ID
       tags: [Categories]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/category_update_input'
+            example:
+              description: Updated category copy for a partial edit.
       responses:
         '200': { description: Category partially updated. }
     delete:
@@ -187,6 +269,11 @@ paths:
     get:
       summary: List buyers for category by encrypted ID
       tags: [Categories]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
+        - $ref: '#/components/parameters/unique_query'
       responses:
         '200': { description: Buyers found. }
 
@@ -201,6 +288,10 @@ paths:
     get:
       summary: List products for category by encrypted ID
       tags: [Categories]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Products found. }
 
@@ -215,6 +306,11 @@ paths:
     get:
       summary: List sellers for category by encrypted ID
       tags: [Categories]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
+        - $ref: '#/components/parameters/unique_query'
       responses:
         '200': { description: Sellers found. }
 
@@ -229,6 +325,10 @@ paths:
     get:
       summary: List transactions for category by encrypted ID
       tags: [Categories]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Transactions found. }
 
@@ -239,6 +339,11 @@ paths:
     get:
       summary: List all products
       tags: [Products]
+      parameters:
+        - $ref: '#/components/parameters/created_at_query'
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Product list. }
 
@@ -267,6 +372,10 @@ paths:
     get:
       summary: List buyers for product by encrypted ID
       tags: [Products]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Buyers found. }
 
@@ -287,6 +396,12 @@ paths:
     post:
       summary: Create a transaction for product by encrypted buyer ID
       tags: [Transactions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/product_buyer_transaction_input'
       responses:
         '201': { description: Transaction created. }
 
@@ -301,6 +416,10 @@ paths:
     get:
       summary: List categories for product by encrypted ID
       tags: [Products]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Categories listed. }
 
@@ -345,6 +464,10 @@ paths:
     get:
       summary: List transactions for product by encrypted ID
       tags: [Products]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Transactions listed. }
 
@@ -355,6 +478,11 @@ paths:
     get:
       summary: List all sellers
       tags: [Sellers]
+      parameters:
+        - $ref: '#/components/parameters/verified_query'
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Sellers listed. }
 
@@ -383,6 +511,11 @@ paths:
     get:
       summary: List buyers for seller by encrypted ID
       tags: [Sellers]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
+        - $ref: '#/components/parameters/unique_query'
       responses:
         '200': { description: Buyers listed. }
 
@@ -397,6 +530,11 @@ paths:
     get:
       summary: List categories for seller by encrypted ID
       tags: [Sellers]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
+        - $ref: '#/components/parameters/unique_query'
       responses:
         '200': { description: Categories listed. }
 
@@ -411,11 +549,33 @@ paths:
     get:
       summary: List products for seller by encrypted ID
       tags: [Sellers]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Products listed. }
     post:
       summary: Create a product for seller by encrypted ID
       tags: [Sellers]
+      description: Submit this request as multipart form data because the product image is uploaded as a file.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/seller_product_store_input'
+            encoding:
+              image:
+                contentType: image/*
+            examples:
+              create_product:
+                summary: Create product with image upload
+                value:
+                  name: Wireless Keyboard
+                  description: Compact mechanical keyboard.
+                  quantity: 10
+                  image: binary file upload
       responses:
         '201': { description: Product created. }
 
@@ -441,11 +601,46 @@ paths:
     put:
       summary: Update seller’s product by encrypted IDs
       tags: [Sellers]
+      description: Submit this request as multipart form data. Use PUT when sending a fuller replacement-style update.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/seller_product_update_input'
+            encoding:
+              image:
+                contentType: image/*
+            examples:
+              full_update:
+                summary: Full product update
+                value:
+                  name: Wireless Keyboard Pro
+                  description: Full-size mechanical keyboard with backlight.
+                  quantity: 12
+                  status: available
+                  image: binary file upload
       responses:
         '200': { description: Product updated. }
     patch:
       summary: Partially update seller’s product by encrypted IDs
       tags: [Sellers]
+      description: Submit this request as multipart form data. Use PATCH when sending only the fields being changed.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/seller_product_update_input'
+            encoding:
+              image:
+                contentType: image/*
+            examples:
+              partial_update:
+                summary: Partial product update
+                value:
+                  quantity: 8
+                  status: unavailable
       responses:
         '200': { description: Product partially updated. }
     delete:
@@ -465,6 +660,10 @@ paths:
     get:
       summary: List transactions for seller by encrypted ID
       tags: [Sellers]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Transactions listed. }
 
@@ -475,6 +674,10 @@ paths:
     get:
       summary: List all transactions
       tags: [Transactions]
+      parameters:
+        - $ref: '#/components/parameters/sort_by_query'
+        - $ref: '#/components/parameters/desc_query'
+        - $ref: '#/components/parameters/per_page_query'
       responses:
         '200': { description: Transactions listed. }
 
@@ -521,8 +724,185 @@ paths:
         '200': { description: Sellers listed. }
 
 components:
+  parameters:
+    verified_query:
+      name: verified
+      in: query
+      required: false
+      description: Filter results by verification state.
+      schema:
+        type: string
+        enum: ['0', '1', 'true', 'false']
+      example: '1'
+    admin_query:
+      name: admin
+      in: query
+      required: false
+      description: Filter results by admin flag.
+      schema:
+        type: string
+        enum: ['0', '1', 'true', 'false']
+      example: 'true'
+    sort_by_query:
+      name: sort_by
+      in: query
+      required: false
+      description: Sort results by an allowed model field.
+      schema:
+        type: string
+      example: name
+    desc_query:
+      name: desc
+      in: query
+      required: false
+      description: Reverse the sort direction.
+      schema:
+        type: string
+        enum: ['true', 'false', '1', '0']
+      example: 'true'
+    per_page_query:
+      name: per_page
+      in: query
+      required: false
+      description: Page size between 2 and 50, or disabled to turn pagination off.
+      schema:
+        oneOf:
+          - type: integer
+            minimum: 2
+            maximum: 50
+          - type: string
+            enum: [disabled]
+      example: 10
+    unique_query:
+      name: unique
+      in: query
+      required: false
+      description: Return only unique related results.
+      schema:
+        type: string
+        enum: ['0', '1', 'true', 'false']
+      example: 'true'
+    created_at_query:
+      name: created_at
+      in: query
+      required: false
+      description: Filter products by exact created timestamp.
+      schema:
+        type: string
+      example: '2020-06-14 05:39:56'
   schemas:
     encrypted_id:
       type: string
       pattern: '^[A-Za-z0-9+/]+=*$'
       description: "Encrypted ID"
+    user_store_input:
+      type: object
+      required: [name, email, password, password_confirmation]
+      properties:
+        name:
+          type: string
+          example: Jane Doe
+        email:
+          type: string
+          format: email
+          example: jane@example.com
+        password:
+          type: string
+          format: password
+          minLength: 6
+          example: secret123
+        password_confirmation:
+          type: string
+          format: password
+          minLength: 6
+          example: secret123
+    user_update_input:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Jane Doe
+        email:
+          type: string
+          format: email
+          example: jane@example.com
+        password:
+          type: string
+          format: password
+          minLength: 6
+          example: secret123
+        password_confirmation:
+          type: string
+          format: password
+          minLength: 6
+          example: secret123
+        admin:
+          type: string
+          description: Admin flag enum as accepted by the API.
+          example: false
+    category_store_input:
+      type: object
+      required: [name, description]
+      properties:
+        name:
+          type: string
+          example: Electronics
+        description:
+          type: string
+          example: Devices and accessories.
+    category_update_input:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Electronics
+        description:
+          type: string
+          example: Devices and accessories.
+    product_buyer_transaction_input:
+      type: object
+      required: [quantity]
+      properties:
+        quantity:
+          type: integer
+          minimum: 1
+          example: 2
+    seller_product_store_input:
+      type: object
+      required: [name, description, quantity, image]
+      properties:
+        name:
+          type: string
+          example: Wireless Keyboard
+        description:
+          type: string
+          example: Compact mechanical keyboard.
+        quantity:
+          type: integer
+          minimum: 1
+          example: 10
+        image:
+          type: string
+          format: binary
+          description: Upload the product image file.
+    seller_product_update_input:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Wireless Keyboard
+        description:
+          type: string
+          example: Compact mechanical keyboard.
+        quantity:
+          type: integer
+          minimum: 1
+          example: 10
+        status:
+          type: string
+          enum: [available, unavailable]
+          example: available
+        image:
+          type: string
+          format: binary
+          description: Optionally upload a replacement product image file.
