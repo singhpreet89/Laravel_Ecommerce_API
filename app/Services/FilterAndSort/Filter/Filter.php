@@ -37,7 +37,7 @@ class Filter
      */
     private function verifyCustomFilterColumns() : void
     {
-        if (is_array($this->filterAndSortOnColumns) && sizeOf($this->filterAndSortOnColumns) > 0) {
+        if (is_array($this->filterAndSortOnColumns) && count($this->filterAndSortOnColumns) > 0) {
             $this->filterEnabledTableColumnCollection = collect($this->filterAndSortOnColumns);
         } else {
             $this->filterEnabledTableColumnCollection = collect($this->tableColumns);

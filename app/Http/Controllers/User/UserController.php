@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
@@ -12,7 +11,6 @@ use App\Http\Resources\User\UserCollection;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Services\Pagination\PaginationFacade;
-use Symfony\Component\HttpFoundation\Response;
 use App\Services\FilterAndSort\FilterAndSortFacade;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 

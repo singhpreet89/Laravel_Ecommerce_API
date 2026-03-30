@@ -27,7 +27,7 @@ class Sort
                 'sometimes',
                 'required',
                 Rule::in(
-                    is_array($this->filterAndSortOnColumns) && sizeOf($this->filterAndSortOnColumns) > 0
+                    is_array($this->filterAndSortOnColumns) && count($this->filterAndSortOnColumns) > 0
                         ? $this->filterAndSortOnColumns : $this->tableColumns
                 ),  // The sort_by Query parameter could only use Columns defined inside the mode OR the table's original columns
             ],

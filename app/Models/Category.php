@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\mODELS\Product;
+use App\Models\Product;
 use App\Traits\ResolveTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
