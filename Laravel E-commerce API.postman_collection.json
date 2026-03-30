@@ -12,13 +12,26 @@
 					"name": "GET - All Users",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users",
+							"raw": "{{url}}/api/v1/users",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							]
 						}
@@ -29,13 +42,26 @@
 					"name": "GET - All Users (Custom Filter)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users?verified=1&admin=true",
+							"raw": "{{url}}/api/v1/users?verified=1&admin=true",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							],
 							"query": [
@@ -56,13 +82,26 @@
 					"name": "GET - All Users (Custom Sort)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users?sort_by=name",
+							"raw": "{{url}}/api/v1/users?sort_by=name",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							],
 							"query": [
@@ -79,13 +118,26 @@
 					"name": "GET - All Users (Custom Sort) Desc",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users?sort_by=name&desc=true",
+							"raw": "{{url}}/api/v1/users?sort_by=name&desc=true",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							],
 							"query": [
@@ -107,13 +159,26 @@
 					"name": "GET - All Users (Custom Pagination)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users?per_page=25",
+							"raw": "{{url}}/api/v1/users?per_page=25",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							],
 							"query": [
@@ -130,13 +195,26 @@
 					"name": "GET - All Users (Pagination Disabled)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users?per_page=disabled",
+							"raw": "{{url}}/api/v1/users?per_page=disabled",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							],
 							"query": [
@@ -153,13 +231,26 @@
 					"name": "GET - All Users (Custom Filter & Pagination)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users?verified=0&admin=true&per_page=10",
+							"raw": "{{url}}/api/v1/users?verified=0&admin=true&per_page=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							],
 							"query": [
@@ -185,13 +276,26 @@
 					"name": "GET - All Users (Custom Sort & Pagination)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users?sort_by=name&per_page=10",
+							"raw": "{{url}}/api/v1/users?sort_by=name&per_page=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							],
 							"query": [
@@ -213,13 +317,26 @@
 					"name": "GET - All Buyers (Custom Filter, Sort &  Pagination) Copy",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users?verified=1&admin=false&sort_by=name&per_page=10",
+							"raw": "{{url}}/api/v1/users?verified=1&admin=false&sort_by=name&per_page=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							],
 							"query": [
@@ -249,15 +366,28 @@
 					"name": "GET - One User",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users/1",
+							"raw": "{{url}}/api/v1/users/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users",
-								"1"
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09"
 							]
 						}
 					},
@@ -290,11 +420,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/users",
+							"raw": "{{url}}/api/v1/users",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users"
 							]
 						}
@@ -325,14 +457,57 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/users/1001",
+							"raw": "{{url}}/api/v1/users/czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users",
-								"1001"
+								"czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH - Partially Update a User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/users/{{user_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{user_id}}"
+							]
+						},
+						"description": "Partially update a user by encrypted ID. Replace {{user_id}} with the encrypted ID.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Updated Name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						}
 					},
 					"response": []
@@ -341,15 +516,28 @@
 					"name": "Delete - One User",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/users/1001",
+							"raw": "{{url}}/api/v1/users/czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"users",
-								"1001"
+								"czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09"
 							]
 						}
 					},
@@ -365,13 +553,26 @@
 					"name": "GET - All Buyers",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers",
+							"raw": "{{url}}/api/v1/buyers",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							]
 						}
@@ -382,13 +583,26 @@
 					"name": "GET - All Buyers (Custom Filter)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers?verified=1",
+							"raw": "{{url}}/api/v1/buyers?verified=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							],
 							"query": [
@@ -406,13 +620,26 @@
 					"name": "GET - All Buyers (Custom Sort)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers?sort_by=email",
+							"raw": "{{url}}/api/v1/buyers?sort_by=email",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							],
 							"query": [
@@ -430,13 +657,26 @@
 					"name": "GET - All Buyers (Custom Sort) Desc",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers?sort_by=created_at&desc=0",
+							"raw": "{{url}}/api/v1/buyers?sort_by=created_at&desc=0",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							],
 							"query": [
@@ -458,13 +698,26 @@
 					"name": "GET - All Buyers (Custom Pagination)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers?per_page=10",
+							"raw": "{{url}}/api/v1/buyers?per_page=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							],
 							"query": [
@@ -482,13 +735,26 @@
 					"name": "GET - All Buyers (Pagination Disabled) ",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers?per_page=disabled",
+							"raw": "{{url}}/api/v1/buyers?per_page=disabled",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							],
 							"query": [
@@ -506,13 +772,26 @@
 					"name": "GET - All Buyers (Custom Filter & Pagination)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers?verified=0&per_page=10",
+							"raw": "{{url}}/api/v1/buyers?verified=0&per_page=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							],
 							"query": [
@@ -534,13 +813,26 @@
 					"name": "GET - All Buyers (Custom Sort & Pagination)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers?sort_by=name&per_page=10",
+							"raw": "{{url}}/api/v1/buyers?sort_by=name&per_page=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							],
 							"query": [
@@ -562,13 +854,26 @@
 					"name": "GET - All Buyers (Custom Filter, Sort &  Pagination)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/buyers?verified=0&sort_by=name&per_page=10",
+							"raw": "{{url}}/api/v1/buyers?verified=0&sort_by=name&per_page=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"buyers"
 							],
 							"query": [
@@ -594,18 +899,28 @@
 					"name": "GET - One Buyer",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/buyers/1",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/buyers/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"buyers",
-								"1"
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09"
 							]
 						}
 					},
@@ -615,18 +930,28 @@
 					"name": "GET - All Transactions of a Buyer",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/buyers/5/transactions",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/buyers/OGhKYlljU2hmd0V6KytlUUdmVnY3dz09/transactions",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"buyers",
-								"5",
+								"OGhKYlljU2hmd0V6KytlUUdmVnY3dz09",
 								"transactions"
 							]
 						}
@@ -637,18 +962,28 @@
 					"name": "GET - All Products the Buyer has purchased in all Transactions",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/buyers/5/products",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/buyers/OGhKYlljU2hmd0V6KytlUUdmVnY3dz09/products",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"buyers",
-								"5",
+								"OGhKYlljU2hmd0V6KytlUUdmVnY3dz09",
 								"products"
 							]
 						}
@@ -664,19 +999,23 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8000/api/buyers/5/sellers?unique=true",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/buyers/OGhKYlljU2hmd0V6KytlUUdmVnY3dz09/sellers?unique=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"buyers",
-								"5",
+								"OGhKYlljU2hmd0V6KytlUUdmVnY3dz09",
 								"sellers"
 							],
 							"query": [
@@ -693,18 +1032,28 @@
 					"name": "GET - All the Non - unique(Sellers) whose products are purchased by the Buyer through Transactions",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/buyers/5/sellers",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/buyers/OGhKYlljU2hmd0V6KytlUUdmVnY3dz09/sellers",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"buyers",
-								"5",
+								"OGhKYlljU2hmd0V6KytlUUdmVnY3dz09",
 								"sellers"
 							]
 						}
@@ -715,18 +1064,28 @@
 					"name": "GET - All the Categories of Products purchased by a Buyer",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/buyers/1/categories",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/buyers/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/categories",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"buyers",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"categories"
 							]
 						}
@@ -737,18 +1096,28 @@
 					"name": "GET - All the Categories of Products purchased by a Buyer (Custom Filter)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/buyers/1/categories?verified=1",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/buyers/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/categories?verified=1",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"buyers",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"categories"
 							],
 							"query": [
@@ -771,16 +1140,26 @@
 					"name": "GET - All Sellers",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/sellers",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/sellers",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"sellers"
 							]
 						}
@@ -791,18 +1170,28 @@
 					"name": "GET - One Seller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/sellers/2",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/sellers/bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"sellers",
-								"2"
+								"bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09"
 							]
 						}
 					},
@@ -812,18 +1201,28 @@
 					"name": "GET - All the Transactions for a Seller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/sellers/3/transactions",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/sellers/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/transactions",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"sellers",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"transactions"
 							]
 						}
@@ -834,18 +1233,28 @@
 					"name": "GET - All Unique(Categories) of a Product belonging to a Seller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/sellers/2/categories?unique=true",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/sellers/bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09/categories?unique=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"sellers",
-								"2",
+								"bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09",
 								"categories"
 							],
 							"query": [
@@ -862,18 +1271,28 @@
 					"name": "GET - All Non - Unique(Categories) of a Product belonging to a Seller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/sellers/2/categories",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/sellers/bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09/categories",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"sellers",
-								"2",
+								"bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09",
 								"categories"
 							]
 						}
@@ -884,18 +1303,28 @@
 					"name": "GET - All the Unique(Buyers) whoc purchased a Sellers's product ",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/sellers/3/buyers?unique=true",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/sellers/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/buyers?unique=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"sellers",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"buyers"
 							],
 							"query": [
@@ -912,18 +1341,28 @@
 					"name": "GET - All the Non - Unique(Buyers) whoc purchased a Sellers's product",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/sellers/3/buyers",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/sellers/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/buyers",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"sellers",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"buyers"
 							]
 						}
@@ -934,18 +1373,65 @@
 					"name": "GET - All products of a Seller",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/sellers/2/products",
+							"raw": "{{url}}/api/v1/sellers/bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09/products",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"sellers",
-								"2",
+								"bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09",
 								"products"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - One Product of a Seller",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/sellers/{{seller_id}}/products/{{product_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sellers",
+								"{{seller_id}}",
+								"products",
+								"{{product_id}}"
+							]
+						},
+						"description": "Get a specific product of a seller by encrypted IDs. Replace {{seller_id}} and {{product_id}} with encrypted IDs."
 					},
 					"response": []
 				},
@@ -994,16 +1480,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/sellers/3/products",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/sellers/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/products",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"sellers",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"products"
 							]
 						},
@@ -1061,15 +1546,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/sellers/3/products/1001",
+							"raw": "{{url}}/api/v1/sellers/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/products/czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"sellers",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"products",
-								"1001"
+								"czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09"
 							]
 						},
 						"description": "In order to send a PUT request with an Image. We need to use Method spoofing and send the _method=PUT. Because the raw and x-www-form-urlencodestring don't support file types."
@@ -1077,20 +1564,76 @@
 					"response": []
 				},
 				{
-					"name": "DELETE - Seller Deleting a Product ",
+					"name": "PATCH - Seller Partially Updating a Product",
 					"request": {
-						"method": "DELETE",
-						"header": [],
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/sellers/3/products/1001",
+							"raw": "{{url}}/api/v1/sellers/{{seller_id}}/products/{{product_id}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"sellers",
-								"3",
+								"{{seller_id}}",
 								"products",
-								"1001"
+								"{{product_id}}"
+							]
+						},
+						"description": "Partially update a seller's product by encrypted IDs. Replace {{seller_id}} and {{product_id}} with encrypted IDs. Uses method spoofing: send as POST with _method=PATCH for multipart.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Partially Updated Product\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Seller Deleting a Product ",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/sellers/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/products/czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sellers",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
+								"products",
+								"czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09"
 							]
 						}
 					},
@@ -1136,19 +1679,23 @@
 										"key": "Content-Type",
 										"value": "application/json",
 										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8000/api/buyers/1000",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/buyers/blNWejZkOGxSdTZ6TzA0TWZHdDI0Zz09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"buyers",
-										"1000"
+										"blNWejZkOGxSdTZ6TzA0TWZHdDI0Zz09"
 									]
 								},
 								"description": "POST, PUT, PATCH and DELETE methods are not supported."
@@ -1164,19 +1711,23 @@
 										"key": "Content-Type",
 										"value": "application/json",
 										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8000/api/sellers/1000",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/sellers/blNWejZkOGxSdTZ6TzA0TWZHdDI0Zz09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"sellers",
-										"1000"
+										"blNWejZkOGxSdTZ6TzA0TWZHdDI0Zz09"
 									]
 								},
 								"description": "POST, PUT, PATCH and DELETE methods are not supported."
@@ -1194,18 +1745,28 @@
 							"name": "User - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/users/1200",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/users/VEhhWVhrYjZVVENWMHc0ckpQMDFHZz09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"users",
-										"1200"
+										"VEhhWVhrYjZVVENWMHc0ckpQMDFHZz09"
 									]
 								}
 							},
@@ -1215,18 +1776,28 @@
 							"name": "Buyer - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/buyers/1200",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/buyers/VEhhWVhrYjZVVENWMHc0ckpQMDFHZz09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"buyers",
-										"1200"
+										"VEhhWVhrYjZVVENWMHc0ckpQMDFHZz09"
 									]
 								}
 							},
@@ -1236,18 +1807,28 @@
 							"name": "Seller - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/sellers/1200",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/sellers/VEhhWVhrYjZVVENWMHc0ckpQMDFHZz09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"sellers",
-										"1200"
+										"VEhhWVhrYjZVVENWMHc0ckpQMDFHZz09"
 									]
 								}
 							},
@@ -1257,18 +1838,28 @@
 							"name": "Category - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/categories/500",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/categories/NjdQOW1iSk1PK0cydWI3ekt5Wnc1dz09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"categories",
-										"500"
+										"NjdQOW1iSk1PK0cydWI3ekt5Wnc1dz09"
 									]
 								}
 							},
@@ -1278,18 +1869,28 @@
 							"name": "Product - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/products/1500",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/products/d2lOdjA3UkNwUXI2U00zczR4U0psdz09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"products",
-										"1500"
+										"d2lOdjA3UkNwUXI2U00zczR4U0psdz09"
 									]
 								}
 							},
@@ -1299,18 +1900,28 @@
 							"name": "Transaction - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/transactions/5000",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/transactions/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"transactions",
-										"5000"
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09"
 									]
 								}
 							},
@@ -1320,18 +1931,28 @@
 							"name": "Transaction Category - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/transactions/5000/categories",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/transactions/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/categories",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"transactions",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"categories"
 									]
 								}
@@ -1342,18 +1963,28 @@
 							"name": "Transaction Seller - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/transactions/5000/sellers",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/transactions/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/sellers",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"transactions",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"sellers"
 									]
 								}
@@ -1364,18 +1995,28 @@
 							"name": "Buyer Transaction - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/buyers/5000/transactions",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/buyers/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/transactions",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"buyers",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"transactions"
 									]
 								}
@@ -1386,18 +2027,28 @@
 							"name": "Buyer Product - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/buyers/5000/products",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/buyers/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/products",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"buyers",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"products"
 									]
 								}
@@ -1408,18 +2059,28 @@
 							"name": "Buyer Seller - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/buyers/5000/sellers",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/buyers/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/sellers",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"buyers",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"sellers"
 									]
 								}
@@ -1430,18 +2091,28 @@
 							"name": "Buyer Categories - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/buyers/5000/categories?unique=true",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/buyers/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/categories?unique=true",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"buyers",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"categories"
 									],
 									"query": [
@@ -1458,18 +2129,28 @@
 							"name": "GET - Category Product - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/categories/5000/products",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/categories/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/products",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"categories",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"products"
 									]
 								}
@@ -1480,18 +2161,28 @@
 							"name": "GET - Category Transaction - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/categories/5000/transactions",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/categories/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/transactions",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"categories",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"transactions"
 									]
 								}
@@ -1502,18 +2193,28 @@
 							"name": "GET - Category Buyer - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/categories/5000/buyers",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/categories/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/buyers",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"categories",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"buyers"
 									]
 								}
@@ -1524,18 +2225,28 @@
 							"name": "GET - Seller Transaction - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/sellers/5000/transactions",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/sellers/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/transactions",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"sellers",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"transactions"
 									]
 								}
@@ -1546,18 +2257,28 @@
 							"name": "GET - Seller Category - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/sellers/5000/categories",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/sellers/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/categories",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"sellers",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"categories"
 									]
 								}
@@ -1568,18 +2289,28 @@
 							"name": "GET - Seller Buyer - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/sellers/5000/buyers",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/sellers/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/buyers",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"sellers",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"buyers"
 									]
 								}
@@ -1590,15 +2321,28 @@
 							"name": "GET - Seller Product - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/sellers/5000/products",
+									"raw": "{{url}}/api/v1/sellers/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/products",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"sellers",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"products"
 									]
 								}
@@ -1609,15 +2353,28 @@
 							"name": "GET - Product Transaction - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/products/5000/transactions",
+									"raw": "{{url}}/api/v1/products/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/transactions",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"products",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"transactions"
 									]
 								}
@@ -1628,15 +2385,28 @@
 							"name": "GET - Product Buyer - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/products/5000/buyers",
+									"raw": "{{url}}/api/v1/products/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/buyers",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"products",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"buyers"
 									]
 								}
@@ -1647,15 +2417,28 @@
 							"name": "GET - Product Category - Model not found",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/products/5000/categories",
+									"raw": "{{url}}/api/v1/products/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/categories",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"products",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"categories"
 									]
 								}
@@ -1666,17 +2449,30 @@
 							"name": "PUT - Product Category - Model not found (Product does not Exist)",
 							"request": {
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/products/5000/categories/25",
+									"raw": "{{url}}/api/v1/products/MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09/categories/UU5aRFp2Y0lDMnltWUpvZFRtT3ZHUT09",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"products",
-										"5000",
+										"MUxvMWpIeHRoV1NNVkowc0ovTG9HUT09",
 										"categories",
-										"25"
+										"UU5aRFp2Y0lDMnltWUpvZFRtT3ZHUT09"
 									]
 								}
 							},
@@ -1686,17 +2482,30 @@
 							"name": "PUT - Product Category - Model not found (Category does not exist))",
 							"request": {
 								"method": "PUT",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/products/3/categories/2500",
+									"raw": "{{url}}/api/v1/products/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/categories/YXVhbU5JYU9wT0NWZDFrUWZRVXFOQT09",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"products",
-										"3",
+										"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 										"categories",
-										"2500"
+										"YXVhbU5JYU9wT0NWZDFrUWZRVXFOQT09"
 									]
 								}
 							},
@@ -1713,9 +2522,20 @@
 							"name": "Invalid Url",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/users/somethingRandom",
+									"raw": "{{url}}/users/somethingRandom",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1760,16 +2580,15 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8000/api/users/1001",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/users/czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"users",
-										"1001"
+										"czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09"
 									]
 								},
 								"description": "Since the Newly created users are not verified by default, they can't update the admin field."
@@ -1787,18 +2606,28 @@
 							"name": "DELETE - User having Products or Transactions",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:8000/api/users/1",
-									"protocol": "http",
+									"raw": "{{url}}/api/v1/users/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
 										"api",
+										"v1",
 										"users",
-										"1"
+										"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09"
 									]
 								}
 							},
@@ -1862,15 +2691,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/sellers/2/products/1006",
+									"raw": "{{url}}/api/v1/sellers/bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09/products/WnpXNHJ3N090dEF3T2FWM2VZczNjUT09",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"sellers",
-										"2",
+										"bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09",
 										"products",
-										"1006"
+										"WnpXNHJ3N090dEF3T2FWM2VZczNjUT09"
 									]
 								}
 							},
@@ -1921,15 +2752,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/sellers/3/products/1006",
+									"raw": "{{url}}/api/v1/sellers/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/products/WnpXNHJ3N090dEF3T2FWM2VZczNjUT09",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"sellers",
-										"3",
+										"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 										"products",
-										"1006"
+										"WnpXNHJ3N090dEF3T2FWM2VZczNjUT09"
 									]
 								}
 							},
@@ -1946,17 +2779,30 @@
 							"name": "DELETE - Seller Deleting a Product Error (i.e. Product is not being deleted by it's original seller))",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/sellers/2/products/1001",
+									"raw": "{{url}}/api/v1/sellers/bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09/products/czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"sellers",
-										"2",
+										"bGp6eVpKRjhFbDJkdnNvN0c4UVJQZz09",
 										"products",
-										"1001"
+										"czV4K1JBUjhpUGdUOEJ1Qlp0VFJlQT09"
 									]
 								}
 							},
@@ -1973,17 +2819,30 @@
 							"name": "DELETE - Deleting a Product's Category Error",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/products/3/categories/40",
+									"raw": "{{url}}/api/v1/products/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/categories/ZVdnQ2RmN0lOWDRCWFFUZmdHeGRrUT09",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"products",
-										"3",
+										"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 										"categories",
-										"40"
+										"ZVdnQ2RmN0lOWDRCWFFUZmdHeGRrUT09"
 									]
 								}
 							},
@@ -2000,13 +2859,26 @@
 							"name": "GET - All Buyers (Custom Filter)  with verified=2 which does not exist",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/buyers?verified=2",
+									"raw": "{{url}}/api/v1/buyers?verified=2",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"buyers"
 									],
 									"query": [
@@ -2024,13 +2896,26 @@
 							"name": "GET - All Buyers (Custom Filter)  with admin=true (admin field is not visible for Buyer)",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/buyers?verified=1&admin=true&sort_by=name&desc=1&per_page=10",
+									"raw": "{{url}}/api/v1/buyers?verified=1&admin=true&sort_by=name&desc=1&per_page=10",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"buyers"
 									],
 									"query": [
@@ -2064,13 +2949,26 @@
 							"name": "GET - All Buyers (Custom Sort) with no value",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/buyers?sort_by=",
+									"raw": "{{url}}/api/v1/buyers?sort_by=",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"buyers"
 									],
 									"query": [
@@ -2088,13 +2986,26 @@
 							"name": "GET - All Buyers (Custom Sort) with Invalid value",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/buyers?sort_by=someRandomName",
+									"raw": "{{url}}/api/v1/buyers?sort_by=someRandomName",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"buyers"
 									],
 									"query": [
@@ -2112,13 +3023,26 @@
 							"name": "GET - All Buyers (Custom Pagination) with Unsupported Index",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/buyers?per_page=1",
+									"raw": "{{url}}/api/v1/buyers?per_page=1",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"buyers"
 									],
 									"query": [
@@ -2136,13 +3060,26 @@
 							"name": "GET - All Buyers (Custom Pagination) with Unsupported Index - 2",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/buyers?per_page=52",
+									"raw": "{{url}}/api/v1/buyers?per_page=52",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v1",
 										"buyers"
 									],
 									"query": [
@@ -2170,16 +3107,26 @@
 					"name": "GET - All Categories",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories"
 							]
 						}
@@ -2190,18 +3137,28 @@
 					"name": "GET - One Category",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories/1",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"1"
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09"
 							]
 						}
 					},
@@ -2228,14 +3185,13 @@
 							"raw": "{\r\n    \"name\" : \"Phones\",\r\n    \"description\" : \"All type of phones comes under this category\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/categories",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories"
 							]
 						}
@@ -2266,17 +3222,57 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/categories/31",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/TVRiTmtQUFFTcldqREJuWGxHUXdjUT09",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"31"
+								"TVRiTmtQUFFTcldqREJuWGxHUXdjUT09"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH - Partially Update a Category",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/categories/{{category_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"{{category_id}}"
+							]
+						},
+						"description": "Partially update a category by encrypted ID. Replace {{category_id}} with the encrypted ID.",
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Updated Category Name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						}
 					},
 					"response": []
@@ -2285,18 +3281,28 @@
 					"name": "DELETE - One Category",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories/31",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/TVRiTmtQUFFTcldqREJuWGxHUXdjUT09",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"31"
+								"TVRiTmtQUFFTcldqREJuWGxHUXdjUT09"
 							]
 						}
 					},
@@ -2306,18 +3312,28 @@
 					"name": "GET - All Products belong to a Category",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories/1/products",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/products",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"products"
 							]
 						}
@@ -2328,18 +3344,28 @@
 					"name": "GET - All Unique(Sellers) belong to the Products of a Category",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories/1/sellers?unique=true",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/sellers?unique=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"sellers"
 							],
 							"query": [
@@ -2356,18 +3382,28 @@
 					"name": "GET - All Non - Unique(Sellers) belong to the Products of a Category Copy",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories/1/sellers",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/sellers",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"sellers"
 							]
 						}
@@ -2378,18 +3414,28 @@
 					"name": "GET - All Transactions belong to a  Category of Products",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories/1/transactions",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/transactions",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"transactions"
 							]
 						}
@@ -2400,18 +3446,28 @@
 					"name": "GET - All Unique(Buyers) which performed Transactions on Products belong to a Category ",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories/1/buyers?unique=true",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/buyers?unique=true",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"buyers"
 							],
 							"query": [
@@ -2428,18 +3484,28 @@
 					"name": "GET - All Non - Unique(Buyers) which performed Transactions on Products belong to a Category",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/categories/1/buyers",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/categories/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/buyers",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"categories",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"buyers"
 							]
 						}
@@ -2456,16 +3522,26 @@
 					"name": "GET - All Products",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/products",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/products",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"products"
 							]
 						}
@@ -2476,16 +3552,26 @@
 					"name": "GET - All Products (Custom Filter)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/products?created_at=2020-06-14 05:39:56",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/products?created_at=2020-06-14 05:39:56",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"products"
 							],
 							"query": [
@@ -2502,18 +3588,28 @@
 					"name": "GET - One Product",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/products/1",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/products/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"products",
-								"1"
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09"
 							]
 						}
 					},
@@ -2523,15 +3619,28 @@
 					"name": "GET - All Transactions belonging to a Product",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/products/3/transactions",
+							"raw": "{{url}}/api/v1/products/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/transactions",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"products",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"transactions"
 							]
 						}
@@ -2542,15 +3651,28 @@
 					"name": "GET - All Buyers of a Product through Transactions",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/products/3/buyers",
+							"raw": "{{url}}/api/v1/products/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/buyers",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"products",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"buyers"
 							]
 						}
@@ -2561,15 +3683,28 @@
 					"name": "GET - All Categories for a Product",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/products/3/categories",
+							"raw": "{{url}}/api/v1/products/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/categories",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"products",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"categories"
 							]
 						}
@@ -2580,17 +3715,30 @@
 					"name": "PUT - Attaching a Category to a Product",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/products/3/categories/25",
+							"raw": "{{url}}/api/v1/products/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/categories/UU5aRFp2Y0lDMnltWUpvZFRtT3ZHUT09",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"products",
-								"3",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
 								"categories",
-								"25"
+								"UU5aRFp2Y0lDMnltWUpvZFRtT3ZHUT09"
 							]
 						},
 						"description": "Using PUT method to actually add a New Category with the Product."
@@ -2598,20 +3746,67 @@
 					"response": []
 				},
 				{
-					"name": "DELETE - Remove a Category of a Product",
+					"name": "PATCH - Partially Attach a Category to a Product",
 					"request": {
-						"method": "DELETE",
-						"header": [],
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/products/3/categories/25",
+							"raw": "{{url}}/api/v1/products/{{product_id}}/categories/{{category_id}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"products",
-								"3",
+								"{{product_id}}",
 								"categories",
-								"25"
+								"{{category_id}}"
+							]
+						},
+						"description": "Partially update a product-category link by encrypted IDs. Replace {{product_id}} and {{category_id}} with encrypted IDs."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Remove a Category of a Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/products/S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09/categories/UU5aRFp2Y0lDMnltWUpvZFRtT3ZHUT09",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"S1lRVDVPRkE0VWpVLzF1dklJVXB1UT09",
+								"categories",
+								"UU5aRFp2Y0lDMnltWUpvZFRtT3ZHUT09"
 							]
 						},
 						"description": "Using PUT method to actually add a New Category with the Product."
@@ -2642,15 +3837,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/products/167/buyers/1/transactions",
+							"raw": "{{url}}/api/v1/products/VWNTMGdkWXh0RHJmK0liTzQ2dXAvZz09/buyers/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/transactions",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v1",
 								"products",
-								"167",
+								"VWNTMGdkWXh0RHJmK0liTzQ2dXAvZz09",
 								"buyers",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"transactions"
 							]
 						},
@@ -2668,16 +3865,26 @@
 					"name": "GET - All Transactions",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/transactions",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/transactions",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"transactions"
 							]
 						}
@@ -2688,18 +3895,28 @@
 					"name": "GET - One Transaction",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/transactions/1",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/transactions/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"transactions",
-								"1"
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09"
 							]
 						}
 					},
@@ -2709,18 +3926,28 @@
 					"name": "GET - All Categories related to a Product's Transaction",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/transactions/1/categories",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/transactions/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/categories",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"transactions",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"categories"
 							]
 						}
@@ -2731,18 +3958,28 @@
 					"name": "GET - Sellers related to a Product's Transaction",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8000/api/transactions/1/sellers",
-							"protocol": "http",
+							"raw": "{{url}}/api/v1/transactions/SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09/sellers",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
+								"v1",
 								"transactions",
-								"1",
+								"SVV4akJVV0FhVnlvQ1Bab1gzZ3ZIUT09",
 								"sellers"
 							]
 						}
@@ -2779,7 +4016,7 @@
 		{
 			"id": "d6d877dc-8c17-4c5a-be5b-5960ede71746",
 			"key": "url",
-			"value": "http://localhost:8000/api",
+			"value": "http://localhost:7000",
 			"type": "string"
 		}
 	],

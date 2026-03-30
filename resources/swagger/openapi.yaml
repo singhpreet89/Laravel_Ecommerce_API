@@ -50,7 +50,7 @@ paths:
       summary: Delete user by encrypted ID
       tags: [Users]
       responses:
-        '204': { description: User deleted. }
+        '200': { description: User deleted. }
 
   # ─────────────────────────────────────────────────────────────
   # Buyers
@@ -174,7 +174,7 @@ paths:
       summary: Delete category by encrypted ID
       tags: [Categories]
       responses:
-        '204': { description: Category deleted. }
+        '200': { description: Category deleted. }
 
   /api/v1/categories/{category}/buyers:
     parameters:
@@ -332,7 +332,7 @@ paths:
       summary: Remove product–category link by encrypted IDs
       tags: [Products]
       responses:
-        '204': { description: Categories removed. }
+        '200': { description: Categories removed. }
 
   /api/v1/products/{product}/transactions:
     parameters:
@@ -452,7 +452,7 @@ paths:
       summary: Delete seller’s product by encrypted IDs
       tags: [Sellers]
       responses:
-        '204': { description: Product deleted. }
+        '200': { description: Product deleted. }
 
   /api/v1/sellers/{seller}/transactions:
     parameters:
